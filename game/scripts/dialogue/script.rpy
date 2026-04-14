@@ -487,8 +487,6 @@ label day_1_school_corridor_before_lunch:
 
     $ discord.update(details="In-Game", state="In The Hallways︳Day 1")
 
-    
-
     play ambient bga_school_chatter fadein 1 fadeout 1
     scene bg school_corridor with fade
 
@@ -498,6 +496,7 @@ label day_1_lunch:
 
     $ discord.update(details="In-Game", state="At Lunch︳Day 1")
 
+    play ambient bga_school_chatter fadein 1 fadeout 1
     scene bg school_cafeteria with fade
 
 ################################################################################
