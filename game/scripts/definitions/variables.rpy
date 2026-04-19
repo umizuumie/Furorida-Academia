@@ -1,3 +1,3 @@
-default var_string_playername = "Player"
+default var_string_player_name = "Player"
 default var_integer_random_roll = 0
-default var_boolean_likespoetry = False
+default var_boolean_likes_poetry = False

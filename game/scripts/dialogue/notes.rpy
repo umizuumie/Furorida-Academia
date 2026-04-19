@@ -30,6 +30,5 @@
 ## P.E
 # Chris
 # Randy
-# Jimmy
 # Sienna
 # Keith

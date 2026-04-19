@@ -27,7 +27,7 @@ define marie = Character(_("Marie"), color="#9e00ac")
 ## Characters - Teachers
 define teacher_jackson = Character(_("Mr. Jackson"), color="#3e55c8")
 define teacher_moore = Character(_("Mr. Moore"), color="#307700")
-define teacher_warmuth = Character(_("Ms. Warmuth"), color="#835c00")
+define teacher_warmuth = Character(_("Ms. Warmuth"), color="#9c5679")
 define teacher_abulmi = Character(_("Mr. Abulmi"), color="#6f6600")
 define teacher_obrien = Character(_("Mr. O'Brien"), color="#507000")
 define teacher_ingrim = Character(_("Ms. Ingrim"), color="#575757")
