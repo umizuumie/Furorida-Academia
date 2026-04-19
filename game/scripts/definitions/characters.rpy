@@ -1,5 +1,5 @@
 ## Characters - Player
-define player = Character(_("[var_string_playername]"), color="#636363")
+define player = Character(_("[var_string_player_name]"), color="#636363")
 define narrator = Character(_(""), color="#636363", what_italic=True)
 define event = Character(_(""), color="#636363", what_italic=True)
 
