@@ -529,16 +529,12 @@ label day_1_school_lunch:
             "Ranch Dressing":
                 $ var_string_salad_dressing = "ranch"
                 player "I'll take ranch."
+                teacher_warmuth "Ranch, good choice."
                 
             "Italian Dressing":
                 $ var_string_salad_dressing = "italian"
                 player "Italian please."
-
-    if var_string_salad_dressing == "ranch":
-        teacher_warmuth "Ranch, good choice."
-        
-    elif var_string_salad_dressing == "italian":
-        teacher_warmuth "Italian it is."
+                teacher_warmuth "Italian it is."
 
     teacher_warmuth "Would you like to add on a drink with that?" 
     player "No thank you."
