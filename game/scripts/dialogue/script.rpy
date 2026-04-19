@@ -507,34 +507,32 @@ label day_1_school_lunch:
     narrator "Let's see what they sell here."
     narrator "..."
     narrator "Theres way too much to choose from."
-    narrator "What even is a Pineapple Turkey Burger?"
-    narrator "Hmm"
+    narrator "What even is a pineapple turkey burger?"
+    narrator "Hmm..."
     narrator "I have to decide fast."
     narrator "I guess you can't go wrong with a..."
-    narrator "ummm"
-    narrator "what DO I want..."
+    narrator "Uh..."
     teacher_warmuth "Ahem!"
     player "Oh!"
-    teacher_warmuth "Welcome to the Furorida Cafe"
-    teacher_warmuth "What will you be having today"
-    player "Ummmm."
-    player "Let me get uh.."
-    narrator "Come on, order something"
-    player "A SALAD!"
-    player "Yeah, a salad"
-    teacher_warmuth "Okay one salad"
-    teacher_warmuth "What dressing would you like with that"
+    teacher_warmuth "Welcome to the Furorida Cafe. What will you be having today?"
+    player "Uh..."
+    player "Let me get, uh..."
+    teacher_warmuth "Come on, order something."
+    player "A salad!"
+    player "Yeah, a salad."
+    teacher_warmuth "Alrighty, one salad coming up."
+    teacher_warmuth "What dressing would you like with that?"
     
     menu:
-            narrator "what DO I want..."
+            narrator "Which dressing do I want?"
 
             "Ranch Dressing":
                 $ var_string_salad_dressing = "ranch"
-                narrator "I'll take ranch."
+                player "I'll take ranch."
                 
             "Italian Dressing":
                 $ var_string_salad_dressing = "italian"
-                narrator "Italian please."
+                player "Italian please."
 
     if var_string_salad_dressing == "Ranch Dressing":
         teacher_warmuth "Ranch, good choice."
@@ -543,55 +541,45 @@ label day_1_school_lunch:
         teacher_warmuth "Italian it is."
 
     teacher_warmuth "Would you like to add on a drink with that?" 
-    player "No thank you"
-    teacher_warmuth "Okay one salad" 
+    player "No thank you."
+    teacher_warmuth "Okay, one salad." 
 
     $ var_integer_random_roll = renpy.random.randint(1, 100)
 
     if var_integer_random_roll <= 1:
-        teacher_warmuth "Your total will be 9.67" 
+        teacher_warmuth "Your total will be $9.67." 
     else:
-        teacher_warmuth "Your total will be 9.56" 
+        teacher_warmuth "Your total will be $9.56." 
 
     teacher_warmuth "Will you be paying with cash or card today?" 
-    player "total..." 
-    player "paying..." 
-    player "I uh" 
-    player "Don't have my wallet" 
-    teacher_warmuth "Thats okay"
-    teacher_warmuth "Do you have tap to pay on your phone?"
-    player "Tap to pay?" 
-    player "Wait a second" 
-    player "I do!" 
-    teacher_warmuth "Great."
-    teacher_warmuth "Just tap your phone when you're ready."
-    narrator "The phone tapped the screen."
-    teacher_warmuth "I'm sorry."
-    teacher_warmuth "Your card declined."
+    player "Total...? Paying...?" 
+    player "I uh, don't have my wallet."
+    teacher_warmuth "That's okay, do you have tap-to-pay on your phone?"
+    player "Tap-to-pay?" 
+    player "I think I do."
+    teacher_warmuth "Great, just tap your phone when you're ready."
+    event "..."
+    teacher_warmuth "I'm sorry, Your card declined."
     teacher_warmuth "You are welcome to tap again."
-    narrator "declined?"
-    narrator "I seem to be short on money"
-    player "It's fine" 
-    player "you can just cancel the order" 
-    teacher_warmuth "Oh..."
-    teacher_warmuth "Well in that case you can check out the room next door"
-    teacher_warmuth "Our food pantry offers free food to students who need it"
+    narrator "Declined? I guess I'm short on money..."
+    player "It's fine. You can cancel the order." 
+    teacher_warmuth "Well in that case, you can check out the room next door."
+    teacher_warmuth "Our food pantry offers free food to students who need it."
     narrator "Free?"
-    narrator "I guess it doesn't hurt to check it out"
-    player "Oh, thanks." 
-    player "I'll check it out" 
-    chris "Man, did I just hear a card decline." 
+    narrator "I guess it doesn't hurt to check it out."
+    player "Thanks. I'll check it out." 
+    chris "{i}{color=#5b5b5b}{size=26}Man, did I just hear a card decline?{/size}{/color}{/i}"
     
     scene bg school_cafeteria_pantry with fade
 
-    narrator "These food options aren't exactly the greatest thing around"
-    narrator "I'm pretty sure this beef jerky is expired"
-    narrator "But its free, so I'll take what I can get"
-    narrator "I guess a jerky stick and a bottle of water is nutritional enough"
+    narrator "These food options aren't exactly the greatest thing around."
+    narrator "I'm pretty sure this beef jerky is expired..."
+    narrator "But it's free, so I'll take what I can get."
+    narrator "I guess a jerky stick and a bottle of water is nutritional enough..."
 
     scene bg school_cafeteria with fade
 
-    narrator "I suppose this counts as lunch"
+    narrator "I suppose this counts as lunch..."
 
     menu:
             narrator "Now where should I sit?"
@@ -599,16 +587,12 @@ label day_1_school_lunch:
             "I'll sit with July.":
                 $ var_string_lunch_table = "july"
                 narrator "I think I'll sit with July."
+                narrator "Gotta find where July is sitting..."
                 
             "By myself.":
                 $ var_string_lunch_table = "myself"
                 narrator "I'll just sit by myself for now."
-
-    if var_string_lunch_table == "july":
-        narrator "Gotta find where July is sitting."
-        
-    elif var_string_lunch_table == "myself":
-        narrator "Gotta find a place to sit now."
+                narrator "I'll find a place."
 
     narrator "Hmm..."
     
@@ -700,7 +684,7 @@ label day_1_school_lunch_table_july:
     play sound sfx_paper_slide
     show object schedule_paper at slide_in_center
 
-    narrator "Well, where am I headed next?"
+    narrator "Well, where am I going next?"
     narrator "P.E.? Right after lunch?"
 
     play sound sfx_paper_slide
@@ -714,59 +698,56 @@ label day_1_school_lunch_table_july:
 
 label day_1_school_lunch_table_myself:
 
-    narrator "Nobody is over here."
-    narrator "Guess I can take this for now."
-    narrator "I finally have peace."
-    chris "HEY MR BROBROKESTER"
-    chris "give me your lunch money"
-    narrator "Is he talking to me?."
-    chris "I KNOW YOU CAN HEAR ME ROBBING YOU"
-    narrator "Why me..."
-    player "Hey, uhhh sir"
-    player "You know I have nothing to give right"
-    chris "I HEARD YOUR BROKE ASS GET YOUR CARD DECLINED"
-    player "yeah... so what exactly can I give to you"
-    chris "LUNCH!!!"
-    chris "MONEY!!!"
-    player "Right... uhhh"
-    player "and if I don't have any money"
+    narrator "Nobody's over here."
+    narrator "Guess I can take this seat for now..."
+    narrator "Finally have peace,,."
+    chris "HEY MR. BROBROKESTER."
+    chris "Gimme your lunch money."
+    narrator "Is he talking to me?"
+    chris "I KNOW YOU CAN HEAR ME ROBBING YOU!"
+    player "Hey uh, sir?"
+    player "You know I have nothing to give right."
+    chris "I HEARD YOUR BROKE ASS GOT YOUR CARD DECLINED."
+    player "Yeah... so what exactly can I give to you?"
+    chris "LUNCH, MONEY."
+    player "Right... uh."
+    player "...And if I don't have any money?"
     chris "YOU WILL PAY WITH..."
-    chris "Can I have that"
-    player "Come on man"
-    player "this is my only food"
-    player "If you're hungry just say so"
-    chris "Sorry I don't speak broke"
-    chris "just give me the food and all is forgiven"
-    player "what is forgiven"
+    chris "Can I have that?"
+    player "Come on man, this is my only food."
+    player "If you're hungry, just say so."
+    chris "Sorry, I don't speak broke."
+    chris "Just give me the food, and all is forgiven."
+    player "What is forgiven?"
     chris "..."
-    chris "being broke"
+    chris "Being broke."
     player "..."
-    player "you know what... fine"
-    player "Take it"
-    chris "thank you for your cooperation"
-    chris "*eating*"
-    chris "This food sucks"
-    chris "Do better next time"
-    narrator "The man threw the stick away in the recycling bin"
+    player "You know what... fine."
+    player "Take it."
+    chris "Thank you for your cooperation."
+    event "..."
+    chris "This food sucks."
+    chris "Do better next time! I'm throwing this out."
     player "..."
-    player "Please tell me lunch is over soon"
-    chris "Hmm? What was that BROKIE!"
-    player "Nothing."
+    player "Please tell me lunch is over soon."
+    chris "Hmm? What was that? BROKIE!"
+    player "Nothing..."
 
     play sound sfx_school_bell
     event "{b}*ring!!!* *ring!!!*{/b}"
 
-    player "FINALLY!"
-    player "where to now"
+    player "Finally..."
+    player "Where to now?"
 
     play sound sfx_paper_slide
     show object schedule_paper at slide_in_center
  
-    narrator "P.E."
-    narrator "Great..."
+    narrator "P.E.? Great..."
 
     play sound sfx_paper_slide
     show object schedule_paper at slide_out_center
+
+    narrator "Guess I'm headed to the gym."
 
     jump day_1_school_corridor_before_class_physical_education
 
