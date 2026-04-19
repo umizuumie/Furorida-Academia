@@ -772,7 +772,7 @@ label day_1_school_lunch_table_myself:
 
 ################################################################################
 
-label day_1_school_corridor_before_class_physical_education
+label day_1_school_corridor_before_class_physical_education:
 
     $ discord.update(details="In-Game", state="In The Hallways︳Day 1")
 
@@ -781,7 +781,7 @@ label day_1_school_corridor_before_class_physical_education
 
 ################################################################################
 
-label day_1_school_class_physical_education
+label day_1_school_class_physical_education:
 
     $ discord.update(details="In-Game", state="In P.E. Class︳Day 1")
 
