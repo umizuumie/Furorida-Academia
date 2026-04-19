@@ -529,11 +529,11 @@ label day_1_school_lunch:
             narrator "what DO I want..."
 
             "Ranch Dressing":
-                $ var_string_salad_dressing = "Ranch Dressing"
+                $ var_string_salad_dressing = "ranch"
                 narrator "I'll take ranch."
                 
             "Italian Dressing":
-                $ var_string_salad_dressing = "Italian Dressing"
+                $ var_string_salad_dressing = "italian"
                 narrator "Italian please."
 
     if var_string_salad_dressing == "Ranch Dressing":
@@ -714,43 +714,43 @@ label day_1_school_lunch_table_july:
 
 label day_1_school_lunch_table_myself:
 
-    narrator "Nobody is over here." 
-    narrator "Guess I can take this for now." 
+    narrator "Nobody is over here."
+    narrator "Guess I can take this for now."
     narrator "I finally have peace."
     chris "HEY MR BROBROKESTER"
-    chris "give me your lunch money" 
+    chris "give me your lunch money"
     narrator "Is he talking to me?."
-    chris "I KNOW YOU CAN HEAR ME ROBBING YOU" 
+    chris "I KNOW YOU CAN HEAR ME ROBBING YOU"
     narrator "Why me..."
     player "Hey, uhhh sir"
     player "You know I have nothing to give right"
     chris "I HEARD YOUR BROKE ASS GET YOUR CARD DECLINED"
     player "yeah... so what exactly can I give to you"
-    chris "LUNCH!!!" 
-    chris "MONEY!!!" 
+    chris "LUNCH!!!"
+    chris "MONEY!!!"
     player "Right... uhhh"
     player "and if I don't have any money"
-    chris "YOU WILL PAY WITH..." 
-    chris "Can I have that" 
+    chris "YOU WILL PAY WITH..."
+    chris "Can I have that"
     player "Come on man"
     player "this is my only food"
     player "If you're hungry just say so"
-    chris "Sorry I don't speak broke" 
-    chris "just give me the food and all is forgiven" 
+    chris "Sorry I don't speak broke"
+    chris "just give me the food and all is forgiven"
     player "what is forgiven"
-    chris "..." 
-    chris "being broke" 
+    chris "..."
+    chris "being broke"
     player "..."
     player "you know what... fine"
     player "Take it"
-    chris "thank you for your cooperation" 
-    chris "*eating*" 
-    chris "This food sucks" 
-    chris "Do better next time" 
-    narrator "The man threw the stick away in the recycling bin" 
+    chris "thank you for your cooperation"
+    chris "*eating*"
+    chris "This food sucks"
+    chris "Do better next time"
+    narrator "The man threw the stick away in the recycling bin"
     player "..."
     player "Please tell me lunch is over soon"
-    chris "Hmm? What was that BROKIE!" 
+    chris "Hmm? What was that BROKIE!"
     player "Nothing."
 
     play sound sfx_school_bell
@@ -761,7 +761,7 @@ label day_1_school_lunch_table_myself:
 
     play sound sfx_paper_slide
     show object schedule_paper at slide_in_center
-
+ 
     narrator "P.E."
     narrator "Great..."
 
