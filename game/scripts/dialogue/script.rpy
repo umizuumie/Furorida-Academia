@@ -405,7 +405,7 @@ label day_1_school_class_history:
     july "He does this a lot, by the way."
     july "It's unfortunate that you ended up here. Not the greatest way to start your first day..."
     player "What do you mean?"
-    july "The teacher. He loves to ramble on about history — it gives us essentially a free class period."
+    july "The teacher. He loves to ramble on about history... it gives us essentially a free class period."
     july "But if you ask me, it just shows how qualified he is to teach this class."
     player "Not if he argues with the class the entire period..."
     teacher_moore "And that's why the Seven Years' War caused Britain to shoot themselves in the foot, so to speak."
@@ -529,12 +529,16 @@ label day_1_school_lunch:
             "Ranch Dressing":
                 $ var_string_salad_dressing = "ranch"
                 player "I'll take ranch."
-                teacher_warmuth "Ranch, good choice."
                 
             "Italian Dressing":
                 $ var_string_salad_dressing = "italian"
                 player "Italian please."
-                teacher_warmuth "Italian it is."
+
+    if var_string_salad_dressing == "ranch":
+        teacher_warmuth "Ranch, good choice."
+        
+    elif var_string_salad_dressing == "italian":
+        teacher_warmuth "Italian it is."
 
     teacher_warmuth "Would you like to add on a drink with that?" 
     player "No thank you."
@@ -633,6 +637,11 @@ label day_1_school_lunch:
 
 label day_1_school_lunch_table_july:
 
+    $ discord.update(details="In-Game", state="At Lunch︳Day 1")
+
+    play ambient bga_school_chatter fadein 1 fadeout 1
+    scene bg school_cafeteria with fade
+
     july "Hey, [var_string_player_name]! Over here!"
     player "Oh, hey July."
     july "What'd you get?"
@@ -656,7 +665,7 @@ label day_1_school_lunch_table_july:
     july "Have you decided what you're gonna pick?"
     player "I haven't really thought about that yet."
     july "I'm doing band, have been for years."
-    july "You could join that — do you play any instruments?"
+    july "You could join that, do you play any instruments?"
     player "Tried, never been good at one."
     july "Maybe band'll be a good excuse to learn one then."
     july "...Unless you wanna sing, like I am."
@@ -694,6 +703,11 @@ label day_1_school_lunch_table_july:
 ################################################################################
 
 label day_1_school_lunch_table_myself:
+
+    $ discord.update(details="In-Game", state="At Lunch︳Day 1")
+
+    play ambient bga_school_chatter fadein 1 fadeout 1
+    scene bg school_cafeteria with fade
 
     narrator "Nobody's over here."
     narrator "Guess I can take this seat for now..."
