@@ -98,8 +98,8 @@ label day_1_school_class_english:
     show edward at right, fade_in
 
     edward "Oi' teach, quit playin' wit me. I'm present!"
-    edward "I'm from Hertfordshire, that's Britain bruv. I transferred 'ere just two years ago. I'm also a thug so don't be playin' wit me. You 'ere mates?"
-    edward "Me, I'm gon' be your top student y'hear?"
+    edward "I'm from Hertfordshire, that's Britain bruv. I transferred 'ere just two years ago. I'm also a thug so don't be playin' wit me. You 'ear mates?"
+    edward "Me, I'm gon' be your top student, y'hear?"
     teacher_jackson "Fascinating... You sound delightful. Everybody say hello to Edward."
     event "..."
 
@@ -126,10 +126,10 @@ label day_1_school_class_english:
 
     $ var_integer_random_roll = renpy.random.randint(1, 100)
 
-    if var_integer_random_roll <= 1:
-        cameron "I'm tung tung tung sa'here. My name's Cameron, I'm a third-year student, and a fun fact about me is that I'm great at photography."
-    else:
+    if var_integer_random_roll <= 99:
         cameron "I'm here. My name's Cameron, I'm a third-year student, and a fun fact about me is that I'm great at photography."
+    else:
+        cameron "I'm tung tung tung sa'here. My name's Cameron, I'm a third-year student, and a fun fact about me is that I'm great at photography."
 
     cameron "I enjoy taking photographs of the school and the surrounding outdoor area. But really, I want to become an actor one day."
     teacher_jackson "{i}{color=#5b5b5b}{size=26}...Not with that stupid name you won't...{/size}{/color}{/i}"
@@ -299,7 +299,7 @@ label day_1_school_corridor_before_class_history:
     scene bg school_corridor with fade
 
     narrator "Glad that's over with..."
-    narrator "Not glad that I'll have to deal with that everyday though."
+    narrator "Not glad that I'll have to deal with that every day though."
     narrator "Anyways, where am I going again?"
 
     play sound sfx_paper_slide
@@ -362,7 +362,7 @@ label day_1_school_class_history:
     luthor "It's Luthor."
     teacher_moore "...And your fact?"
     luthor "I dunno."
-    teacher_moore "C'mon you can think of something!"
+    teacher_moore "C'mon, you can think of something!"
     luthor "..."
     teacher_moore "Disappointing! Keep on thinking while we continue!"
     teacher_moore "You're up!"
@@ -380,7 +380,7 @@ label day_1_school_class_history:
     july "1812...?"
     teacher_moore "Exactly! Now can you tell me why it happened?"
     event "..."
-    teacher_moore "No one? Well it was a war fought between the US and Britain."
+    teacher_moore "No one? Well, it was a war fought between the US and Britain."
     teacher_moore "Does that give anyone an idea?"
     event "..."
     teacher_moore "It was a conflict caused by Britain encroaching on the United States' trade routes."
@@ -405,7 +405,7 @@ label day_1_school_class_history:
     july "He does this a lot, by the way."
     july "It's unfortunate that you ended up here. Not the greatest way to start your first day..."
     player "What do you mean?"
-    july "The teacher. He loves to ramble on about history, it gives us essentially a free class period."
+    july "The teacher. He loves to ramble on about history — it gives us essentially a free class period."
     july "But if you ask me, it just shows how qualified he is to teach this class."
     player "Not if he argues with the class the entire period..."
     teacher_moore "And that's why the Seven Years' War caused Britain to shoot themselves in the foot, so to speak."
@@ -506,7 +506,7 @@ label day_1_school_lunch:
 
     narrator "Let's see what they sell here."
     narrator "..."
-    narrator "Theres way too much to choose from."
+    narrator "There's way too much to choose from."
     narrator "What even is a pineapple turkey burger?"
     narrator "Hmm..."
     narrator "I have to decide fast."
@@ -529,16 +529,12 @@ label day_1_school_lunch:
             "Ranch Dressing":
                 $ var_string_salad_dressing = "ranch"
                 player "I'll take ranch."
+                teacher_warmuth "Ranch, good choice."
                 
             "Italian Dressing":
                 $ var_string_salad_dressing = "italian"
                 player "Italian please."
-
-    if var_string_salad_dressing == "Ranch Dressing":
-        teacher_warmuth "Ranch, good choice."
-        
-    elif var_string_salad_dressing == "Italian Dressing":
-        teacher_warmuth "Italian it is."
+                teacher_warmuth "Italian it is."
 
     teacher_warmuth "Would you like to add on a drink with that?" 
     player "No thank you."
@@ -546,10 +542,10 @@ label day_1_school_lunch:
 
     $ var_integer_random_roll = renpy.random.randint(1, 100)
 
-    if var_integer_random_roll <= 1:
-        teacher_warmuth "Your total will be $9.67." 
-    else:
+    if var_integer_random_roll <= 99:
         teacher_warmuth "Your total will be $9.56." 
+    else:
+        teacher_warmuth "Your total will be $9.67." 
 
     teacher_warmuth "Will you be paying with cash or card today?" 
     player "Total...? Paying...?" 
@@ -559,7 +555,7 @@ label day_1_school_lunch:
     player "I think I do."
     teacher_warmuth "Great, just tap your phone when you're ready."
     event "..."
-    teacher_warmuth "I'm sorry, Your card declined."
+    teacher_warmuth "I'm sorry, your card declined."
     teacher_warmuth "You are welcome to tap again."
     narrator "Declined? I guess I'm short on money..."
     player "It's fine. You can cancel the order." 
@@ -605,24 +601,25 @@ label day_1_school_lunch:
     event "{i}*whistle!*{/i}" with vpunch
 
     narrator "What now...?"
-    locke_hallmonitor "HEY YOU! PUT YOUR HANDS WHERE I CAN SEE THEM!"
+    locke_hall_monitor "HEY YOU! PUT YOUR HANDS WHERE I CAN SEE THEM!"
     player "What do you want?"
-    locke_hallmonitor "Do you realize that you just LITTERED?"
+    locke_hall_monitor "Do you realize that you just LITTERED?"
     player "Really...? Is this about my water?"
     player "I was just picking it up..."
-    locke_hallmonitor "Don't play dumb with me, you know your CRIMES!"
+    locke_hall_monitor "Don't play dumb with me, you know your CRIMES!"
     player "Crimes...? This is stupid."
-    locke_hallmonitor "GASP! Profanity too!"
-    locke_hallmonitor "The staff are going to have a field day with you."
-    player "C'mon man, It's my first day."
-    locke_hallmonitor "Oh. Well in that case, you're free to go."
+    locke_hall_monitor "GASP! Profanity too!"
+    locke_hall_monitor "The staff are going to have a field day with you."
+    player "C'mon man, it's my first day."
+    locke_hall_monitor "Oh. Well in that case, you're free to go."
     player "...Really?"
-    locke_hallmonitor "Yeah."
-    locke_hallmonitor "They don't talk about the rules until the assembly tomorrow."
+    locke_hall_monitor "Yeah."
+    locke_hall_monitor "They don't talk about the rules until the assembly tomorrow."
     player "Assembly?"
-    locke_hallmonitor "Yeah the assembly! Everybody has to go."
+    locke_hall_monitor "Yeah, the assembly! Everybody has to go."
     player "Didn't hear about this."
-    locke_hallmonitor "Well, gotta blast! Remember to never-ever litter!"
+    locke_hall_monitor "Figures, too busy breaking rules to go?"
+    locke_hall_monitor "Well, gotta blast! Remember to never-ever litter!"
     narrator "Guess I'm going to an assembly tomorrow..."
     narrator "Anyways, let's find that seat."
 
@@ -653,22 +650,22 @@ label day_1_school_lunch_table_july:
     july "But uh, he's not actually all that bad if you get to meet him."
     player "Really..."
     july "Yeah, he's friends with a lot of the students here."
-    player "Suprising... Anyways, we have an assembly tomorrow?"
-    july "Yep! They're ramble on about school spirit and rules for about an hour."
+    player "Surprising... Anyways, we have an assembly tomorrow?"
+    july "Yep! They'll ramble on about school spirit and rules for about an hour."
     july "But after that, you'll get to choose your electives."
     july "Have you decided what you're gonna pick?"
     player "I haven't really thought about that yet."
     july "I'm doing band, have been for years."
-    july "You could join that, do you play any instruments?"
+    july "You could join that — do you play any instruments?"
     player "Tried, never been good at one."
     july "Maybe band'll be a good excuse to learn one then."
     july "...Unless you wanna sing, like I am."
     player "Yeah I'll pass on the singing."
     player "I'll think about band though. I don't really know the other options."
-    july "I think there's Art, Culinary, Film, and Spanish? At least avaliable to us right now."
-    july "Oh, and yeah band too. Obviously."
+    july "I think there's Art, Culinary, Film, and Spanish? At least available to us right now."
+    july "Oh, and yeah, band too. Obviously."
     player "Doesn't sound like a lot."
-    july "Don't think the school's budgets a lot, so."
+    july "Don't think the school's budget's a lot, so."
     player "That explains the lunch then."
     july "Uh, yeah. That jerky is probably expired."
     player "Oh I know..."
@@ -700,30 +697,27 @@ label day_1_school_lunch_table_myself:
 
     narrator "Nobody's over here."
     narrator "Guess I can take this seat for now..."
-    narrator "Finally have peace,,."
+    narrator "Finally have some peace..."
     chris "HEY MR. BROBROKESTER."
     chris "Gimme your lunch money."
     narrator "Is he talking to me?"
     chris "I KNOW YOU CAN HEAR ME ROBBING YOU!"
     player "Hey uh, sir?"
-    player "You know I have nothing to give right."
+    player "You know I have nothing to give, right?"
     chris "I HEARD YOUR BROKE ASS GOT YOUR CARD DECLINED."
     player "Yeah... so what exactly can I give to you?"
     chris "LUNCH, MONEY."
-    player "Right... uh."
+    player "Right, uh."
     player "...And if I don't have any money?"
     chris "YOU WILL PAY WITH..."
-    chris "Can I have that?"
+    chris "...Can I have that?"
     player "Come on man, this is my only food."
     player "If you're hungry, just say so."
     chris "Sorry, I don't speak broke."
     chris "Just give me the food, and all is forgiven."
     player "What is forgiven?"
-    chris "..."
-    chris "Being broke."
-    player "..."
-    player "You know what... fine."
-    player "Take it."
+    chris "...Being broke."
+    player "You know what? Fine, take it."
     chris "Thank you for your cooperation."
     event "..."
     chris "This food sucks."

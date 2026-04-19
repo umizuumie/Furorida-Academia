@@ -5,7 +5,7 @@ define event = Character(_(""), color="#636363", what_italic=True)
 
 ## Characters - Students
 define locke = Character(_("Locke"), color="#7541b8")
-define locke_hallmonitor = Character(_("Hall Monitor"), color="#7541b8")
+define locke_hall_monitor = Character(_("Hall Monitor"), color="#7541b8")
 define cameron = Character(_("Cameron"), color="#00718f")
 define chris = Character(_("Chris"), color="#b32228")
 define jimmy = Character(_("Jimmy"), color="#796100")
