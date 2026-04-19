@@ -493,7 +493,7 @@ label day_1_school_class_history:
 
 ################################################################################
 
-label day_1_schooL_lunch:
+label day_1_school_lunch:
 
     $ discord.update(details="In-Game", state="At Lunch︳Day 1")
 
