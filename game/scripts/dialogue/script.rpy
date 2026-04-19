@@ -634,7 +634,7 @@ label day_1_school_lunch:
     locke_hallmonitor "Oh. Well in that case, you're free to go."
     player "...Really?"
     locke_hallmonitor "Yeah."
-    locke_hallmonitor "They don't talk abou the rules until the assembly tomorrow."
+    locke_hallmonitor "They don't talk about the rules until the assembly tomorrow."
     player "Assembly?"
     locke_hallmonitor "Yeah the assembly! Everybody has to go."
     player "Didn't hear about this."
@@ -643,14 +643,14 @@ label day_1_school_lunch:
     narrator "Anyways, let's find that seat."
 
     if var_string_lunch_table == "july":
-        jump day_1_schooL_lunch_table_july
+        jump day_1_school_lunch_table_july
 
     elif var_string_lunch_table == "myself":
-        jump day_1_schooL_lunch_table_myself
+        jump day_1_school_lunch_table_myself
 
 ################################################################################
 
-label day_1_schooL_lunch_table_july:
+label day_1_school_lunch_table_july:
 
     july "Hey, [var_string_player_name]! Over here!"
     player "Oh, hey July."
