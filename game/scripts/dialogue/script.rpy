@@ -510,8 +510,7 @@ label day_1_school_lunch:
     narrator "What even is a pineapple turkey burger?"
     narrator "Hmm..."
     narrator "I have to decide fast."
-    narrator "I guess you can't go wrong with a..."
-    narrator "Uh..."
+    narrator "I guess you can't go wrong with a... uh..."
     teacher_warmuth "Ahem!"
     player "Oh!"
     teacher_warmuth "Welcome to the Furorida Cafe. What will you be having today?"
@@ -635,9 +634,6 @@ label day_1_school_lunch_table_july:
 
     $ discord.update(details="In-Game", state="At Lunch︳Day 1")
 
-    play ambient bga_school_chatter fadein 1 fadeout 1
-    scene bg school_cafeteria with fade
-
     july "Hey, [var_string_player_name]! Over here!"
     player "Oh, hey July."
     july "What'd you get?"
@@ -700,11 +696,6 @@ label day_1_school_lunch_table_july:
 
 label day_1_school_lunch_table_myself:
 
-    $ discord.update(details="In-Game", state="At Lunch︳Day 1")
-
-    play ambient bga_school_chatter fadein 1 fadeout 1
-    scene bg school_cafeteria with fade
-
     narrator "Nobody's over here."
     narrator "Guess I can take this seat for now..."
     narrator "Finally have some peace..."
@@ -740,12 +731,12 @@ label day_1_school_lunch_table_myself:
     play sound sfx_school_bell
     event "{b}*ring!!!* *ring!!!*{/b}"
 
-    player "Finally..."
-    player "Where to now?"
+    narrator "Finally..."
 
     play sound sfx_paper_slide
     show object schedule_paper at slide_in_center
- 
+
+    narrator "Where to now?"
     narrator "P.E.? Great..."
 
     play sound sfx_paper_slide

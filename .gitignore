@@ -28,6 +28,7 @@
 
 # Developer asset files
 /dev
+/.vscode
 
 # Python bytecode
 game/**/*.pyc
