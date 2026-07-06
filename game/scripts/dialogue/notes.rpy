@@ -24,11 +24,18 @@
 # Jessica
 # Keith
 
-## HALLWAY
-# Jimmy
-
 ## P.E
 # Chris
 # Randy
+# Luthor
 # Sienna
-# Keith
+
+## HALLWAY
+# Jimmy
+
+## BREAK PERIOD (Day 1)
+# Johnny
+# Avery
+# Faith
+# Jesse
+# Cameron

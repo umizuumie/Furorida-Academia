@@ -4,7 +4,8 @@ label start:
 
     stop music fadeout 0.5
 
-    jump day_1_school_outside
+    jump day_1_school_class_physical_education
+    # jump day_1_school_outside
 
 ################################################################################
 
@@ -478,7 +479,8 @@ label day_1_school_class_history:
 
     narrator "Poetry, huh."
     narrator "Didn't know that was an option. Now I do."
-    narrator "Anyways, it's lunch time."
+    narrator "Anyways, it's lunch time now right?"
+    narrator "Should probably start heading over."
 
     jump day_1_school_lunch
 
@@ -500,7 +502,7 @@ label day_1_school_lunch:
     play ambient bga_school_chatter fadein 1 fadeout 1
     scene bg school_cafeteria with fade
 
-    narrator "Lunch, time to get a meal."
+    narrator "Time to get a meal."
 
     scene bg school_cafeteria_line with fade
 
@@ -512,16 +514,16 @@ label day_1_school_lunch:
     narrator "I have to decide fast."
     narrator "I guess you can't go wrong with a... uh..."
     teacher_warmuth "Ahem!"
-    player "Oh!"
+    player "Oh, sorry."
     teacher_warmuth "Welcome to the Furorida Cafe. What will you be having today?"
     player "Uh..."
     player "Let me get, uh..."
     teacher_warmuth "Come on, order something."
     player "A salad!"
-    player "Yeah, a salad."
+    player "Yeah, a salad..."
     teacher_warmuth "Alrighty, one salad coming up."
     teacher_warmuth "What dressing would you like with that?"
-    
+
     menu:
             narrator "Which dressing do I want?"
 
@@ -529,42 +531,42 @@ label day_1_school_lunch:
                 $ var_string_salad_dressing = "ranch"
                 player "I'll take ranch."
                 teacher_warmuth "Ranch, good choice."
-                
+
             "Italian Dressing":
                 $ var_string_salad_dressing = "italian"
                 player "Italian please."
                 teacher_warmuth "Italian it is."
 
-    teacher_warmuth "Would you like to add on a drink with that?" 
+    teacher_warmuth "Would you like to add on a drink with that?"
     player "No thank you."
-    teacher_warmuth "Okay, one salad." 
+    teacher_warmuth "Okay, just one salad."
 
     $ var_integer_random_roll = renpy.random.randint(1, 100)
 
     if var_integer_random_roll <= 99:
-        teacher_warmuth "Your total will be $9.56." 
+        teacher_warmuth "Your total will be $9.56."
     else:
-        teacher_warmuth "Your total will be $9.67." 
+        teacher_warmuth "Your total will be $9.67."
 
-    teacher_warmuth "Will you be paying with cash or card today?" 
-    player "Total...? Paying...?" 
+    teacher_warmuth "Will you be paying with cash or card today?"
+    player "Total...? Paying...?"
     player "I uh, don't have my wallet."
     teacher_warmuth "That's okay, do you have tap-to-pay on your phone?"
-    player "Tap-to-pay?" 
+    player "Tap-to-pay?"
     player "I think I do."
     teacher_warmuth "Great, just tap your phone when you're ready."
     event "..."
     teacher_warmuth "I'm sorry, your card declined."
     teacher_warmuth "You are welcome to tap again."
     narrator "Declined? I guess I'm short on money..."
-    player "It's fine. You can cancel the order." 
+    player "It's fine. You can cancel the order."
     teacher_warmuth "Well in that case, you can check out the room next door."
     teacher_warmuth "Our food pantry offers free food to students who need it."
     narrator "Free?"
     narrator "I guess it doesn't hurt to check it out."
-    player "Thanks. I'll check it out." 
+    player "Thanks. I'll check it out."
     chris "{i}{color=#5b5b5b}{size=26}Man, did I just hear a card decline?{/size}{/color}{/i}"
-    
+
     scene bg school_cafeteria_pantry with fade
 
     narrator "These food options aren't exactly the greatest thing around."
@@ -583,14 +585,14 @@ label day_1_school_lunch:
                 $ var_string_lunch_table = "july"
                 narrator "I think I'll sit with July."
                 narrator "Gotta find where July is sitting..."
-                
+
             "By myself.":
                 $ var_string_lunch_table = "myself"
                 narrator "I'll just sit by myself for now."
                 narrator "I'll find a place."
 
     narrator "Hmm..."
-    
+
     play sound sfx_carton_drop
 
     narrator "Oops."
@@ -638,12 +640,12 @@ label day_1_school_lunch_table_july:
     player "Oh, hey July."
     july "What'd you get?"
     player "I just got a jerky stick and some water."
-    july "I just got a turkey sandwich."
+    july "Nice, kinda... I got a turkey sandwich."
     july "Glad you found your way through the cafeteria here."
     player "Is it normally a challenge?"
     july "Was it not one for you?"
     player "Well, actually I guess it was."
-    july "Locke totally stopped you, didn't he."
+    july "Locke totally stopped you, didn't he?"
     player "Is that his name?"
     july "The hall monitor, yeah."
     july "He'll find the smallest reasons to stop you."
@@ -663,16 +665,16 @@ label day_1_school_lunch_table_july:
     july "...Unless you wanna sing, like I am."
     player "Yeah I'll pass on the singing."
     player "I'll think about band though. I don't really know the other options."
-    july "I think there's Art, Culinary, Film, and Spanish? At least available to us right now."
+    july "I think there's Art, Culinary, Film, and Spanish? ...At least available to us right now."
     july "Oh, and yeah, band too. Obviously."
     player "Doesn't sound like a lot."
     july "Don't think the school's budget's a lot, so."
     player "That explains the lunch then."
     july "Uh, yeah. That jerky is probably expired."
-    player "Oh I know..."
+    player "Oh I know."
     july "Think lunch is about to end, catch you later?"
     player "Yeah, I'll see you around."
-    
+
     play sound sfx_school_bell
     event "{b}*ring!!!* *ring!!!*{/b}"
 
@@ -701,7 +703,7 @@ label day_1_school_lunch_table_myself:
     narrator "Finally have some peace..."
     chris "HEY MR. BROBROKESTER."
     chris "Gimme your lunch money."
-    narrator "Is he talking to me?"
+    narrator "...Is he talking to me?"
     chris "I KNOW YOU CAN HEAR ME ROBBING YOU!"
     player "Hey uh, sir?"
     player "You know I have nothing to give, right?"
@@ -755,14 +757,108 @@ label day_1_school_corridor_before_class_physical_education:
     play ambient bga_school_chatter fadein 1 fadeout 1
     scene bg school_corridor with fade
 
+    narrator "Sucks the gym is all the way on the other side of the building."
+    narrator "At least it'll burn off the lunch a bit."
+    narrator "I think I'm here."
+
 ################################################################################
 
 label day_1_school_class_physical_education:
 
     $ discord.update(details="In-Game", state="In P.E. Class︳Day 1")
 
-    play ambient bga_spring_break fadein 1
+    play ambient bga_room_noise fadein 1
     scene bg school_track with fade
+
+    teacher_galloni "Everybody get in line! Single file!"
+    teacher_galloni "It's time for roll call!"
+    luthor "What, is this a prison or something?"
+    teacher_galloni "Funny one here, you're going first."
+    teacher_galloni "Raise your hand high, and say present!"
+    luthor "Oh well, present."
+    teacher_galloni "...We'll work on it. Let's see who else is here."
+    teacher_galloni "[var_string_player_name]?"
+    player "Present!"
+    teacher_galloni "And Randy?"
+    randy "Here coach!"
+    teacher_galloni "You're supossed to say present."
+    randy "Oh uh... present!"
+    teacher_galloni "Chris!"
+    chris "Sir yes sir! Present!"
+    luthor "{i}{color=#5b5b5b}{size=26}Suck up...{/size}{/color}{/i}"
+    chris "What'd you say to me, buddy?"
+    chris "Don't make me take your lunch money..."
+    luthor "We just passed lunch."
+    chris "...Don't make me take your gym money."
+    luthor "Yeah, okay..."
+    teacher_galloni "Quiet down, Quiet down! We're not finished."
+    teacher_galloni "Last one, don't mess this up!"
+    teacher_galloni "Sienna!"
+    event "..."
+    teacher_galloni "Sienna Rivera!"
+    sienna "Yeah whatever. Uh, present."
+    teacher_galloni "Okay... I don't want to make this tough for you all, especially on the first day."
+    teacher_galloni "But this, is not acceptable!"
+    teacher_galloni "Everybody needs to fall in line!"
+    teacher_galloni "We're gonna be running around this gym, no slacking!"
+    teacher_galloni "Let me get my stopwatch..."
+
+    if var_string_lunch_table == "july":
+        chris "Hey who's this guy over here?"
+        chris "You look like a dumb guy. Are you a dumb guy? A stupid head?"
+        player "What do you want?"
+        chris "Just need some registration, a genius ID. Gotta prove you aren't a dumb, dummy, head, guy, stupid guy."
+        luthor "Don't listen to anything this idiot says."
+        chris "Idiot? Look who's talkin'. Don't think this guy is really all there, y'know?"
+        luthor "Yeah, you're a genius."
+        chris "Thank you, thank you. I told you I was right."
+        luthor "Idiot."
+        chris "Hey what'd I do?"
+
+    elif var_string_lunch_table == "myself":
+        chris "Oh hey! It's the brokie broke!"
+        chris "Don't worry, I've started a GoFundMe, it'll rack up some cash for you soon enough."
+        luthor "Making fun of the poor?"
+        chris "Woah woahhh, I never said poor. That's too far Luthor."
+        player "I'm not...-"
+        chris "You're not what? Poor? We know, you're just a brokie broke no money guy."
+        luthor "Chris, all your clothes are from Walmart."
+        chris "Yeah. Walmart has like a one million net worth, so all of this is premium."
+        luthor "..."
+
+    luthor "Just focus on the lesson."
+    chris "Yeah I'm gonna run sooo much faster than you."
+    chris "I'm a fast, speedy, quick guy. You're a slow, slowly, slow guy."
+    teacher_galloni "Alright, since you two can't shut their mouths! You two are going first!"
+    teacher_galloni "Luthor is up! Then Chris."
+    luthor "..."
+    luthor "Dammit..."
+    event "..."
+    player "Crazy people, right...?"
+    sienna "Are you... talking about me?"
+    player "I guess."
+    sienna "Yeah, don't."
+    player "Okay then..."
+    randy "Sorry about her!"
+    player "Oh, hey."
+    randy "You new here? Glad to meet ya, I'm Randy."
+    randy "And your name was [var_string_player_name] right?"
+    player "Yeah."
+    randy "Man, I really don't wanna run."
+    chris "Oh, I wonder why."
+    chris "Some kind of... issue?"
+    chris "Some kind of... respiratory issue?"
+    randy "I mean... yeah."
+    chris "Thats a good excuse."
+    chris "I just leave after my second lap."
+    sienna "Do you ever stop talking."
+    chris "Sienna, you're a... "
+    chris "...Damn."
+    chris "You got me there."
+    teacher_galloni "Chris, you're up!"
+    chris "Saved by the... uhm..."
+    teacher_galloni "Chris!"
+    chris "Ughhhh! Fine!"
 
 ################################################################################
 
