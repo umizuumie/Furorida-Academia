@@ -1,5 +1,5 @@
 ## Characters - Player
-define player = Character(_("[var_string_player_name]"), color="#636363")
+define player = Character(_("[var_string_playername]"), color="#636363")
 define narrator = Character(_(""), color="#636363", what_italic=True)
 define event = Character(_(""), color="#636363", what_italic=True)
 
@@ -30,7 +30,8 @@ define teacher_moore = Character(_("Mr. Moore"), color="#307700")
 define teacher_warmuth = Character(_("Ms. Warmuth"), color="#9c5679")
 define teacher_abulmi = Character(_("Mr. Abulmi"), color="#6f6600")
 define teacher_obrien = Character(_("Mr. O'Brien"), color="#507000")
-define teacher_ingrim = Character(_("Ms. Ingrim"), color="#575757")
+define teacher_ingram = Character(_("Ms. Ingram"), color="#575757")
 define teacher_reyes = Character(_("Dr. Reyes"), color="#70004b")
 define teacher_galloni = Character(_("Mr. Galloni"), color="#706800")
 define teacher_legliter = Character(_("Mrs. Legliter"), color="#705200")
+define teacher_moon = Character(_("Mr. Moon"), color="#2a077c")

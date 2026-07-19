@@ -4,8 +4,8 @@ label start:
 
     stop music fadeout 0.5
 
-    jump day_1_school_class_physical_education
-    # jump day_1_school_outside
+    # jump day_1_school_class_physical_education
+    jump day_1_school_outside
 
 ################################################################################
 
@@ -87,9 +87,9 @@ label day_1_school_class_english:
     teacher_jackson "You, the late kid. You'll go first. Give me your name and a fact about yourself."
 
     $ _raw = renpy.input("{i}What's my name?{/i}", length=24, allow="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'. ").strip()
-    $ var_string_player_name = _raw.title() if _raw else "Player"
+    $ var_string_playername = _raw.title() if _raw else "Player"
 
-    player "I'm [var_string_player_name]. I just moved into town, and this is my first year here."
+    player "I'm [var_string_playername]. I just moved into town, and this is my first year here."
     player "For a fun fact, I uh... play video games in my free time."
     player "...That's about it."
     teacher_jackson "Very unique. And just moved into town too..."
@@ -125,9 +125,9 @@ label day_1_school_class_english:
 
     show cameron at right, fade_in
 
-    $ var_integer_random_roll = renpy.random.randint(1, 100)
+    $ var_integer_randomroll = renpy.random.randint(1, 100)
 
-    if var_integer_random_roll <= 99:
+    if var_integer_randomroll <= 999:
         cameron "I'm here. My name's Cameron, I'm a third-year student, and a fun fact about me is that I'm great at photography."
     else:
         cameron "I'm tung tung tung sa'here. My name's Cameron, I'm a third-year student, and a fun fact about me is that I'm great at photography."
@@ -167,9 +167,9 @@ label day_1_school_class_english:
 
     cameron "{i}{color=#5b5b5b}{size=26}Pssst... Stranger...{/size}{/color}{/i}"
     player "Wh- Huh?"
-    cameron "My apologies. But your name was [var_string_player_name], right?"
+    cameron "My apologies. But your name was [var_string_playername], right?"
     player "Yeah, that's me."
-    cameron "Greetings then, [var_string_player_name]. And welcome to Furorida Academia. As you heard earlier, my name is Cameron."
+    cameron "Greetings then, [var_string_playername]. And welcome to Furorida Academia. As you heard earlier, my name is Cameron."
     cameron "I'm kind of the unofficial school guide."
     cameron "If you need anything, just ask me and I'll have the answer."
     player "Right then... How come Mr. Jackson seems to hate you?"
@@ -254,7 +254,7 @@ label day_1_school_class_english:
     narrator "..."
     teacher_jackson "But we need these charts to ensure the class stays civil and focused... or whatever these charts do."
     teacher_jackson "Jesse, you'll be sitting next to Edward, front row."
-    teacher_jackson "[var_string_player_name], you'll be sitting next to Cameron, middle row."
+    teacher_jackson "[var_string_playername], you'll be sitting next to Cameron, middle row."
     teacher_jackson "And Faith, you'll be sitting at the back."
 
     show faith at right, fade_in
@@ -275,7 +275,7 @@ label day_1_school_class_english:
     show edward at center, fade_out
     show jesse at center, fade_out
 
-    cameron "I'm good with this seating. Right, [var_string_player_name]?"
+    cameron "I'm good with this seating. Right, [var_string_playername]?"
     player "Yeah, sure."
     cameron "Sounds good then."
     teacher_jackson "Tomorrow I expect everybody to have the class materials listed."
@@ -284,7 +284,7 @@ label day_1_school_class_english:
     event "{b}*ring!!!* *ring!!!*{/b}"
 
     teacher_jackson "Alright, get to your next class! I'll see you all tomorrow."
-    cameron "See you later, [var_string_player_name]."
+    cameron "See you later, [var_string_playername]."
 
     show cameron at right, fade_out
 
@@ -370,7 +370,7 @@ label day_1_school_class_history:
 
     play sound sfx_ball_catch_swoosh
 
-    player "I'm [var_string_player_name], and... George Washington was the president once."
+    player "I'm [var_string_playername], and... George Washington was the president once."
     teacher_moore "Correct! He was!"
     teacher_moore "...I have one more student on my roster but they don't seem to be here..."
     teacher_moore "Peculiar... Oh well!"
@@ -401,7 +401,7 @@ label day_1_school_class_history:
     july "Heya, neighbor!"
     player "Huh, me?"
     july "Yeah, since we have some time, I think it'd be best to get to know each other right now."
-    july "I'm July. And you're [var_string_player_name], right?"
+    july "I'm July. And you're [var_string_playername], right?"
     player "Yeah."
     july "He does this a lot, by the way."
     july "It's unfortunate that you ended up here. Not the greatest way to start your first day..."
@@ -430,7 +430,7 @@ label day_1_school_class_history:
     avery "Ah, I'm sorry..."
     player "Don't apologize! It was my fault. I'll help you pick them up."
     avery "Oh, no it's fine...!"
-    avery "Um, you're [var_string_player_name], right? The new student?"
+    avery "Um, you're [var_string_playername], right? The new student?"
     player "That's me."
     avery "Oh, that's cool."
     avery "You... wouldn't happen to like poetry, would you?"
@@ -440,12 +440,12 @@ label day_1_school_class_history:
         narrator "How should I respond?"
 
         "Yeah, I like poetry.":
-            $ var_boolean_likes_poetry = True
+            $ var_boolean_likespoetry = True
             player "Yeah, I like poetry."
             avery "That's great!"
 
         "It's not really my thing.":
-            $ var_boolean_likes_poetry = False
+            $ var_boolean_likespoetry = False
             player "It's not really my thing."
             avery "Oh, I see."
 
@@ -453,7 +453,7 @@ label day_1_school_class_history:
     avery "I'm Avery."
     avery "I'm... kind of the head of the Poetry Club."
 
-    if var_boolean_likes_poetry:
+    if var_boolean_likespoetry:
         avery "We're always looking for new members. No pressure, of course."
         avery "Or... if you could tell others about the club, that would help us out greatly."
     else:
@@ -462,7 +462,7 @@ label day_1_school_class_history:
     avery "Gosh, look at the time!"
     avery "I've gotta get going..."
 
-    if var_boolean_likes_poetry:
+    if var_boolean_likespoetry:
         avery "I'd better be seeing you at the next club meeting, okay?"
     else:
         avery "If you change your mind... I'd better be seeing you at the next club meeting, okay?"
@@ -472,7 +472,7 @@ label day_1_school_class_history:
     avery "Kidding! It's a joke!"
     avery "Seriously though, consider it."
 
-    if var_boolean_likes_poetry:
+    if var_boolean_likespoetry:
         avery "I'll be seeing you... hopefully."
     else:
         avery "Hopefully I'll be seeing you..."
@@ -525,25 +525,25 @@ label day_1_school_lunch:
     teacher_warmuth "What dressing would you like with that?"
 
     menu:
-            narrator "Which dressing do I want?"
+        narrator "Which dressing do I want?"
 
-            "Ranch Dressing":
-                $ var_string_salad_dressing = "ranch"
-                player "I'll take ranch."
-                teacher_warmuth "Ranch, good choice."
+        "Ranch Dressing":
+            $ var_string_saladdressing = "ranch"
+            player "I'll take ranch."
+            teacher_warmuth "Ranch, good choice."
 
-            "Italian Dressing":
-                $ var_string_salad_dressing = "italian"
-                player "Italian please."
-                teacher_warmuth "Italian it is."
+        "Italian Dressing":
+            $ var_string_saladdressing = "italian"
+            player "Italian please."
+            teacher_warmuth "Italian it is."
 
     teacher_warmuth "Would you like to add on a drink with that?"
     player "No thank you."
     teacher_warmuth "Okay, just one salad."
 
-    $ var_integer_random_roll = renpy.random.randint(1, 100)
+    $ var_integer_randomroll = renpy.random.randint(1, 100)
 
-    if var_integer_random_roll <= 99:
+    if var_integer_randomroll <= 99:
         teacher_warmuth "Your total will be $9.56."
     else:
         teacher_warmuth "Your total will be $9.67."
@@ -579,17 +579,17 @@ label day_1_school_lunch:
     narrator "I suppose this counts as lunch..."
 
     menu:
-            narrator "Now where should I sit?"
+        narrator "Now where should I sit?"
 
-            "I'll sit with July.":
-                $ var_string_lunch_table = "july"
-                narrator "I think I'll sit with July."
-                narrator "Gotta find where July is sitting..."
+        "I'll sit with July.":
+            $ var_string_lunchtable = "july"
+            narrator "I think I'll sit with July."
+            narrator "Gotta find where July is sitting..."
 
-            "By myself.":
-                $ var_string_lunch_table = "myself"
-                narrator "I'll just sit by myself for now."
-                narrator "I'll find a place."
+        "By myself.":
+            $ var_string_lunchtable = "myself"
+            narrator "I'll just sit by myself for now."
+            narrator "I'll find a place."
 
     narrator "Hmm..."
 
@@ -624,10 +624,10 @@ label day_1_school_lunch:
     narrator "Guess I'm going to an assembly tomorrow..."
     narrator "Anyways, let's find that seat."
 
-    if var_string_lunch_table == "july":
+    if var_string_lunchtable == "july":
         jump day_1_school_lunch_table_july
 
-    elif var_string_lunch_table == "myself":
+    elif var_string_lunchtable == "myself":
         jump day_1_school_lunch_table_myself
 
 ################################################################################
@@ -636,7 +636,7 @@ label day_1_school_lunch_table_july:
 
     $ discord.update(details="In-Game", state="At Lunch︳Day 1")
 
-    july "Hey, [var_string_player_name]! Over here!"
+    july "Hey, [var_string_playername]! Over here!"
     player "Oh, hey July."
     july "What'd you get?"
     player "I just got a jerky stick and some water."
@@ -650,7 +650,7 @@ label day_1_school_lunch_table_july:
     july "The hall monitor, yeah."
     july "He'll find the smallest reasons to stop you."
     july "Not sure why though, he's not getting paid for it or anything."
-    july "But uh, he's not actually all that bad if you get to meet him."
+    july "But uh, he's not actually all that bad if you get to know him."
     player "Really..."
     july "Yeah, he's friends with a lot of the students here."
     player "Surprising... Anyways, we have an assembly tomorrow?"
@@ -777,7 +777,7 @@ label day_1_school_class_physical_education:
     teacher_galloni "Raise your hand high, and say present!"
     luthor "Oh well, present."
     teacher_galloni "...We'll work on it. Let's see who else is here."
-    teacher_galloni "[var_string_player_name]?"
+    teacher_galloni "[var_string_playername]?"
     player "Present!"
     teacher_galloni "And Randy?"
     randy "Here coach!"
@@ -788,7 +788,7 @@ label day_1_school_class_physical_education:
     luthor "{i}{color=#5b5b5b}{size=26}Suck up...{/size}{/color}{/i}"
     chris "What'd you say to me, buddy?"
     chris "Don't make me take your lunch money..."
-    luthor "We just passed lunch."
+    luthor "We just had lunch."
     chris "...Don't make me take your gym money."
     luthor "Yeah, okay..."
     teacher_galloni "Quiet down, Quiet down! We're not finished."
@@ -802,35 +802,26 @@ label day_1_school_class_physical_education:
     teacher_galloni "Everybody needs to fall in line!"
     teacher_galloni "We're gonna be running around this gym, no slacking!"
     teacher_galloni "Let me get my stopwatch..."
-
-    if var_string_lunch_table == "july":
-        chris "Hey who's this guy over here?"
-        chris "You look like a dumb guy. Are you a dumb guy? A stupid head?"
-        player "What do you want?"
-        chris "Just need some registration, a genius ID. Gotta prove you aren't a dumb, dummy, head, guy, stupid guy."
-        luthor "Don't listen to anything this idiot says."
-        chris "Idiot? Look who's talkin'. Don't think this guy is really all there, y'know?"
-        luthor "Yeah, you're a genius."
-        chris "Thank you, thank you. I told you I was right."
-        luthor "Idiot."
-        chris "Hey what'd I do?"
-
-    elif var_string_lunch_table == "myself":
-        chris "Oh hey! It's the brokie broke!"
-        chris "Don't worry, I've started a GoFundMe, it'll rack up some cash for you soon enough."
-        luthor "Making fun of the poor?"
-        chris "Woah woahhh, I never said poor. That's too far Luthor."
-        player "I'm not...-"
-        chris "You're not what? Poor? We know, you're just a brokie broke no money guy."
-        luthor "Chris, all your clothes are from Walmart."
-        chris "Yeah. Walmart has like a one million net worth, so all of this is premium."
-        luthor "..."
-
-    luthor "Just focus on the lesson."
-    chris "Yeah I'm gonna run sooo much faster than you."
+    luthor "Wait a minute."
+    luthor "Why is this class so much smaller than the others"
+    chris "They told me this was the gifted class"
+    sienna "..."
+    sienna "You're joking right?"
+    chris "Would I ever lie to you."
+    randy "Coach.. Is he telling the truth?"
+    teacher_galloni "No, no Chris why would you tell them that"
+    teacher_galloni "Just because of that Randy has to run first"
+    randy "B-but..."
+    teacher_galloni "GO!"
+    randy "Yes sir!"
+    luthor "..."
+    luthor "Atleast i'm not going first anymore"
+    luthor "Gives me more time to warm up!"
+    chris "Too bad I am the fastest runner there is!!!."
+    chris "I'm gonna run sooo much faster than you."
     chris "I'm a fast, speedy, quick guy. You're a slow, slowly, slow guy."
-    teacher_galloni "Alright, since you two can't shut their mouths! You two are going first!"
-    teacher_galloni "Luthor is up! Then Chris."
+    teacher_galloni "Alright, since you two can't shut their mouths! You two are going next!"
+    teacher_galloni "Luthor Next! Then Chris."
     luthor "..."
     luthor "Dammit..."
     event "..."
@@ -839,12 +830,30 @@ label day_1_school_class_physical_education:
     player "I guess."
     sienna "Yeah, don't."
     player "Okay then..."
-    randy "Sorry about her!"
+
+    if var_string_lunchtable == "july":
+        narrator "so much for that"
+        randy "Ignore her, she can be like that sometimes"
+        sienna "I can hear you 'Ice Cream for Breakfast.'"
+        randy "see."
+
+    elif var_string_lunchtable == "myself":
+        chris "Aww... Did brokesph get rejected"
+        player "Is this all you do?"
+        randy "Ignore those two, they can be a handful"
+
     player "Oh, hey."
     randy "You new here? Glad to meet ya, I'm Randy."
-    randy "And your name was [var_string_player_name] right?"
+    randy "And your name was [var_string_playername] right?"
     player "Yeah."
-    randy "Man, I really don't wanna run."
+    player "Quick Question?"
+    randy "Shoot."
+    player "How did you run the mile that fast"
+    randy "Oh.. right."
+    randy "Coach doesn't keep track"
+    randy "You could go up there and say 13 seconds and he'll put that down"
+    randy "I still try a lap at least once"
+    randy "But man... Do I hate running"
     chris "Oh, I wonder why."
     chris "Some kind of... issue?"
     chris "Some kind of... respiratory issue?"
@@ -853,12 +862,340 @@ label day_1_school_class_physical_education:
     chris "I just leave after my second lap."
     sienna "Do you ever stop talking."
     chris "Sienna, you're a... "
+    chris "... Huh..."
     chris "...Damn."
     chris "You got me there."
     teacher_galloni "Chris, you're up!"
-    chris "Saved by the... uhm..."
-    teacher_galloni "Chris!"
+    chris "But its that other guys turn..."
+    teacher_galloni "Chris! Go... NOW!!!"
     chris "Ughhhh! Fine!"
+    chris "This isn't over!"
+    luthor "Did he notice me?"
+    narrator "Was he hiding behind the bleachers?"
+    sienna "Coach!"
+    luthor "Shut up Sienna!"
+    sienna "Or else what!?"
+    luthor "Or else I'll have your Chemistry partner be Cameron"
+    sienna "Fine."
+    sienna "Stupid TA."
+    luthor "What was that?"
+    sienna "Wasn't talking to you!"
+    sienna "umm.."
+    sienna "I was talking to them"
+    narrator "Is she looking at me?"
+    sienna "You gonna help me out or what?"
+
+    menu:
+        narrator "Should I help her?"
+
+        "Help Sienna":
+            $ var_boolean_helpedsienna = True
+            player "So, uh"
+            player "Did you do the homework for math?"
+            sienna "Oh."
+            sienna "Yeah, what about it"
+            player "I just needed help with..."
+            player "Question 2"
+            sienna "Oh that!"
+            sienna "I um, guessed."
+            sienna "You're on your own."
+            player "I can probably just put down random numbers"
+            sienna "*chuckles*"
+            sienna "Yeah, that is true"
+            teacher_galloni "Sienna, your turn!"
+            sienna "Damn it"
+            sienna "I guess I have to get running" 
+            sienna "I hope I helped atleast a little bit"
+
+        "Ignore Sienna":
+            $ var_boolean_helpedsienna = False
+            narrator "I think I'll look the other way"
+            player "You know this floor looks really shiny"
+            luthor "Not even the new person wants to talk to you!"
+            luthor "Talk again and I'll change the seats"
+            narrator "I look over at Sienna"
+            player "Does a TA have that kind of power"
+            sienna "Don't talk to me."
+            sienna "Don't even look at me."
+            teacher_galloni "Sienna, your turn!"
+            narrator "Sienna quickly got up and went straight to the track"
+            narrator "I think I made a mistake"
+            narrator "I might be able to make it up with her"
+
+    play sound sfx_school_bell
+    event "{b}*ring!!!* *ring!!!*{/b}"
+
+    teacher_galloni "What! huh!"
+    teacher_galloni "Looks like class is over"
+    teacher_galloni "Everyone who ran give me your times"
+    teacher_galloni "The rest of you will finish up tomorrow"
+    narrator "Gym could either make or break my whole year here."
+    narrator "lets hope I get some fun out of it."
+    
+    if var_boolean_helpedsienna == True:
+        sienna "Thanks for having my back today"
+        sienna "Its good to know that theres one sane person in this class"
+        player "Any time!"
+
+    narrator "I finally get a break."
+    narrator "For today atleast."
+    narrator "What to do with all this free time."
+    
+    jump day_1_school_corridor_before_class_science
+
+################################################################################
+
+label day_1_school_corridor_before_class_science:
+
+    $ discord.update(details="In-Game", state="In The Hallway︳Day 1")
+
+    play ambient bga_school_chatter fadein 1 fadeout 1
+    scene bg school_corridor with fade
+    narrator "I left the gym and went to go explore the campus a bit more"
+    narrator "but there is just one problem."
+    narrator "I think I'm lost."
+    player "I was like, 90 percent sure my science class was over here."
+    player "Did I make a wrong turn?"
+    jimmy "You look lost"
+    jimmy "Do you need some help?"
+    player "Oh, yeah actually"
+    player "I'm looking for my science class"
+    player "Its my sixth period, but I don't want to be late on your first day"
+    jimmy "First day! in that case Hi..."
+    jimmy "I'm Jimmy!"
+    jimmy "Nice to meet you."
+    player "I'm [var_string_playername]"
+    jimmy "You said you are looking for a science class?"
+    player "Correct"
+    player "Mr. Moon's Class"
+    jimmy "Mr Moon huh"
+    jimmy "He's a bit more down the way you came in."
+    jimmy "Room 181"
+    player "Thank you so much"
+    jimmy "No problem"
+    jimmy "Always here to help."
+    jimmy "Say you don't have an elective either do you."
+    player "Yeah, how'd you know?"
+    jimmy "I don't have one picked out either."
+    jimmy "You have a good excuse with this being your first day and all"
+    jimmy "I can't make up my mind."
+    jimmy "but tomorrow is the day we have to pick one"
+    player "Tomorrow?"
+    jimmy "Yeah."
+    jimmy "Did they not tell you?"
+    player "No"
+    jimmy "Well you better start thinking"
+    jimmy "I was thinking culinary for myself"
+    jimmy "life skills help me out personally"
+    jimmy "but of course thats all up to you"
+
+    play sound sfx_school_bell
+    event "{b}*ring!!!* *ring!!!*{/b}"
+
+    jimmy "Looks like class has started for everyone else"
+    jimmy "I for one need to study."
+    jimmy "so I'll be catching you on the flip side"
+    jimmy "I hope you have a great time here."
+    
+    narrator "Jimmy left the hallway"
+    narrator "He mentioned something about a culinary class"
+    narrator "that could be fun"
+    narrator "Now my break starts."
+    narrator "I suppose it wouldn't hurt to explore electives before tomorrow comes by"
+
+    jump day_1_school_class_break
+
+################################################################################
+
+label day_1_school_class_break:
+
+    $ discord.update(details="In-Game", state="On Break︳Day 1")
+
+    play ambient bga_school_chatter fadein 1 fadeout 1
+    scene bg school_corridor with fade
+
+    narrator "Now my science class is down there..."
+    narrator "but there is more classes I can check out."
+    narrator "I don't have time to check every class."
+
+    menu:
+        narrator "Which way should I go?"
+
+        "West":
+            $ var_string_direction = "west"
+            narrator "West it is"
+
+        #SWITCH BACKGROUND BAND
+            player "I hear music over here"
+            player "There might be an elective over here"
+        
+        #Laine singing audio
+
+            player "Is that... singing?"
+            player "I think its was over there by the window."
+            player "I hope they don't mind an audience."
+            narrator "You followed the sound of the singing and found someone sitting by themselves practicing"
+            narrator "You watched silently until they finished their part"
+            laine "Do you mind?"
+            player "Oh, I uhh"
+            player "I just wanted to say it sounded great"
+            laine "Oh I know"
+            laine "but I wouldn't say great"
+            laine "I'd say perfect"
+            player "I guess, yeah"
+            laine "Oh no, you wouldn't get it."
+            laine "You don't seem like someone with a knack for music."
+            laine "I've never seen you around the music class"
+            laine "As a matter of fact I've never seen you at all."
+            laine "Not that I care but are you new?"
+            player "Yeah actually, its my first day."
+            laine "Well in that case its never too late to join the class"
+            laine "If you thought my singing was... how did you put it."
+            laine "'Great'"
+            laine "You could hear more of it if you signed up"
+            laine "If you have the talent for it that is"
+            laine "Music isn't for everyone after all"
+            player "Yeah.. Great."
+            narrator "She's not the nicest person to talk to"
+            narrator "but it seems like she wants people to join the class"
+            laine "Do you think you're talented enough to join the likes of me?"
+            player "You'll find out tomorrow"
+            laine "Hmm?"
+            laine "Well I better see you tomorrow"
+            laine "Or else I'll think very little of you."
+            laine "Not like I already do"
+            laine "but you get the picture."
+            player "uh huhhhh"
+            laine "Well I better get back to my class"
+            laine "We have a performance soon, and of course, they need me."
+            laine "You better be here tomorrow"
+            laine "Whoever you are."
+            narrator "She's not the nicest person to talk to"
+            narrator "but it seems she wants people to join"
+            narrator "just could have phrased it a little different."
+
+        "North":
+            $ var_string_direction = "north"
+            narrator "This way."
+        
+        #BACKGROUND ART
+
+        "East":
+            $ var_string_direction = "east"
+            narrator "Theres gotta be something over here."
+            
+        #BACKGROUND CULINARY
+
+################################################################################
+
+label day_1_school_class_science:
+
+    $ discord.update(details="In-Game", state="On Break︳Day 1")
+
+    play ambient bga_school_chatter fadein 1 fadeout 1
+    scene bg school_classroom_science with fade
+    
+    teacher_moon "Come in everybody, come in!"
+    teacher_moon "Have a seat everyone, any seat at all."
+    teacher_moon "Hope you all are ready for some science, because we're gonna get right into that."
+    teacher_moon "But first of all, attendance."
+    teacher_moon "Is [var_string_playername] here?"
+    player "Right here."
+    teacher_moon "Next up on the list is Jake! Jake Glue!"
+    jake "I'm present! Or... I was present, but that was in the past."
+    teacher_moon "Good one Jake! You're the glue that holds my classroom together."
+    teacher_moon "Now we have Locke?"
+    locke "Present! Wait presents? Is it christmas already?"
+    narrator "Oh great, the hall monitor is in here."
+    teacher_moon "Sure is my boy! Now is Jesse here?"
+    jesse "R-Right here, Mr. Moon!"
+    teacher_moon "And last but not least, Faith! Faith Walker."
+    faith "Over here!"
+    teacher_moon "Great, everyone's here!"
+    teacher_moon "Now, before we get into all the fun and interesting science..."
+    teacher_moon "We first need to talk about the importance of lab safety!"
+    teacher_moon "We have goggles and gloves in the cabinets to the right of the class, next to the windows."
+    teacher_moon "And while you all should be careful enough to never have to use it, we have an eye wash station in the corner."
+    teacher_moon "As well as a shower area next to it. With some curtains for privacy."
+    jesse "You m-mean if we get something on us, we have to get into a s-shower in front of the entire class?"
+    teacher_moon "Yes but there are curtains! And it's only if you get some real dangerous stuff on you!"
+    teacher_moon "Now does everyone understand our lab safety?"
+    faith "Sure... I think."
+    jake "You know it, Mr. Moon!"
+    teacher_moon "Now, let's begin."
+    teacher_moon "I need three groups of two, so everyone form a group!"
+    jake "But Mr. Moon, you have five students!"
+    teacher_moon "Darn you're right. Come work with me, Jake!"
+    jake "Coming right away!"
+    narrator "A group of two... hm."
+    narrator "Faith seems like a safe choice..."
+    narrator "But July did say Locke wasn't all that bad..."
+    narrator "And uhh... Jesse sure is something."
+
+    menu:
+        narrator "Who do I pick to be my science partner?"
+
+        "Faith":
+            $ var_string_sciencepartner = "faith"
+            narrator "I'll pick Faith."
+            player "Hey Faith, wanna group up?"
+            faith "Sure! Don't really know anyone here any better anyways..."
+            player "Yeah... I'm still getting used to it."
+            player "Anyways, uh... Mr. Moon!"
+            teacher_moon "Yes, [var_string_playername]?"
+            player "Me and Faith are grouping up."
+            teacher_moon "Perfect! That means Locke and Jesse are grouping up?"
+            jesse "G-guess so then..."
+
+        "Locke":
+            $ var_string_sciencepartner = "locke"
+            narrator "I'll see if I can come around to Locke."
+            player "Hey uh, Locke? Wanna be science partners?"
+            locke "Yes siree! Mr. Moon! Me and..."
+            player "It's [var_string_playername]."
+            locke "Me and [var_string_playername] are science partners!"
+            teacher_moon "Fantastic you two!"
+            jesse "I g-guess me and Faith are grouping up then."
+
+        "Jesse":
+            $ var_string_sciencepartner = "jesse"
+            narrator "Well, let's try Jesse."
+            player "Hey Jesse?"
+            jesse "Y-yeah? What do you need?"
+            player "Wanna group up for this?"
+            jesse "I g-guess I have to."
+            teacher_moon "Jesse, are you grouping up with [var_string_playername]?"
+            jesse "Yeah..."
+            teacher_moon "Alright, that means Faith and Locke are grouping up I assume?"
+            faith "Guess so...!"
+
+    teacher_moon "Then everyone's decided! Let's get to the lesson now."
+    teacher_moon "Does anyone know what the mitochondria is?"
+    jake "I know! I know! Pick me! Pick me!"
+    teacher_moon "Don't be too hasty! You gotta raise your hand before you can answer!"
+    jake "I almost forgot! Now I know! Pick me!"
+    teacher_moon "Hmm... How about Jesse?"
+    jesse "The uh... what now?"
+    teacher_moon "The mitochondria! The powerhouse of the cell!"
+    teacher_moon "Oh, shoot! I wasn't meant to say that part!"
+    jesse "You r-really think all that is real...?"
+    teacher_moon "Cells? Why yes! It's the very building block of life. Quite hard to challenge their existence no?"
+    jesse "I just think... they look too colorful, and c-complicated for that."
+    teacher_moon "Huh. Guess we gotta get some microscopes in here sometime!"
+    teacher_moon "Anyways yes, the mitochondria is the powerhouse of the cell!"
+    teacher_moon "Everyone knows that, but can someone tell me what it means?"
+    teacher_moon "..."
+    teacher_moon "No one knows?"
+    jake "Mr. Moon, don't you think this is all a bit too simple? We should be engaging in much higher learning than this."
+    teacher_moon "Hmm... I suppose you're correct."
+    teacher_moon "What would you like to learn first, Jake?"
+
+    $ var_integer_randomroll = renpy.random.randint(1, 1000000000000)
+
+    if var_integer_randomroll <= 999999999999:
+        jake ""
+    else:
+        jake "Yes sir, how do I effectively shake my bottom at maximum efficiency?"
 
 ################################################################################
 
