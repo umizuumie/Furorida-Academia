@@ -27,6 +27,7 @@ define config.predict_statements = 20
 default preferences.text_cps = 35
 default preferences.afm_time = 15
 default persistent.discord_enabled = True
+default preferences.skip_unseen = True
 
 define config.save_directory = "FuroridaAcademia"
 define config.window_icon = "resources/images/gui/branding/window_icon.png"

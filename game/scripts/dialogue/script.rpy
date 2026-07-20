@@ -827,7 +827,7 @@ label day_1_school_class_physical_education:
     luthor "Dammit..."
     event "..."
     player "Crazy people, right...?"
-    sienna "Are you... talking about me?"
+    sienna "Are you... talking to me?"
     player "I guess."
     sienna "Yeah, don't."
     player "Okay then..."
@@ -952,6 +952,7 @@ label day_1_school_corridor_before_class_science:
 
     play ambient bga_school_chatter fadein 1 fadeout 1
     scene bg school_corridor with fade
+
     narrator "I left the gym and went to go explore the campus a bit more."
     narrator "But there is just one problem."
     narrator "I think I'm lost."
@@ -1017,72 +1018,26 @@ label day_1_school_class_break:
     menu:
         narrator "Which way should I go?"
 
-        "West":
-            $ var_string_breakdirection = "west"
-            narrator "West it is."
-            jump day_1_school_break_direction_west
-
         "North":
             $ var_string_breakdirection = "north"
-            jump day_1_school_break_direction_north
+            jump day_1_school_class_break_direction_north
 
         "East":
             $ var_string_breakdirection = "east"
             narrator "There's gotta be something over here."
-            jump day_1_school_break_direction_east
+            jump day_1_school_class_break_direction_east
 
-    play sound sfx_school_bell
-    event "{b}*ring!!!* *ring!!!*{/b}"
-
-    player "Looks like my break is over. At least I know where to go for science now."
-
-################################################################################
-
-label day_1_school_class_break_direction_west:
-
-    play ambient bga_school_chatter fadein 1 fadeout 1
-    scene bg school_corridor_band with fade
-
-    narrator "Am I hearing music? Maybe there's an elective over here..."
-
-    play sound sfx_distant_singing
-
-    narrator "Is that, singing...?"
-    narrator "I think it was over there by the window. I hope they don't mind an audience..."
-    narrator "..."
-    laine "Do you mind?"
-    player "Oh, I uhh... I just wanted to say it sounded great."
-    laine "Oh, I know. But I wouldn't say great."
-    laine "I'd say perfect."
-    player "I guess, yeah."
-    laine "Oh no, you wouldn't get it. You don't seem like someone with a knack for music."
-    laine "I've never seen you around the music class."
-    laine "As a matter of fact, I've never seen you at all."
-    laine "Not that I care, but are you new?"
-    player "Yeah, actually, it's my first day."
-    laine "Well, in that case, it's never too late to join the class."
-    laine "If you thought my singing was... how did you put it?"
-    laine "'Great'."
-    laine "You could hear more of it if you signed up."
-    laine "If you have the talent for it, that is. Music isn't for everyone, after all."
-    player "Yeah... great."
-    laine "Do you think you're talented enough to join the likes of me?"
-    player "You'll find out tomorrow."
-    laine "Hmm? Well, I better see you tomorrow."
-    laine "Or else, I'll think very little of you..."
-    laine "Not like I already do. But you get the picture."
-    player "Uh huh..."
-    laine "Well, I better get back to my class."
-    laine "We have a performance soon, and of course, they need me."
-    laine "You better be here tomorrow."
-    laine "...Whoever you are."
-    narrator "She doesn't seem like the nicest person to talk to."
-    narrator "But it seems she wants people to join."
-    narrator "Just... could have phrased it a little more kindly."
+        "West":
+            $ var_string_breakdirection = "west"
+            narrator "West it is."
+            jump day_1_school_class_break_direction_west
 
 ################################################################################
 
 label day_1_school_class_break_direction_north:
+
+    play ambient bga_school_chatter fadein 1 fadeout 1
+    scene bg school_corridor_art with fade
 
     narrator "This way."
     narrator "Everything on that wall is bright"
@@ -1125,9 +1080,19 @@ label day_1_school_class_break_direction_north:
     narrator "..."
     narrator "Art class... I could use the creativity."
 
+    play sound sfx_school_bell
+    event "{b}*ring!!!* *ring!!!*{/b}"
+
+    narrator "Looks like my break is over. At least I know where to go for science now."
+
+    jump day_1_school_class_science
+
 ################################################################################
 
 label day_1_school_class_break_direction_east:
+
+    play ambient bga_school_chatter fadein 1 fadeout 1
+    scene bg school_corridor_culinary with fade
 
     narrator "I smell something"
     narrator "I can't tell what it is"
@@ -1172,7 +1137,7 @@ label day_1_school_class_break_direction_east:
         sienna "Trust me."
         sienna "There are some stuck up people in there."
         
-        ##Play Phone Alarm
+        # play sound sfx_phone_alarm
 
         sienna "Oh, thats my alarm"
         sienna "I gotta go check up on my dish"
@@ -1182,14 +1147,76 @@ label day_1_school_class_break_direction_east:
         narrator "Sienna headed back to the class"
 
     elif var_boolean_helpedsienna == False:
-        player "True, money can be low at times"
-        player "True, money can be low at times"
-        player "True, money can be low at times"
+        player "It looks like theres a whole kitchen in there"
+        player "despite the low number of students everyone is working hard on their own thing."
+        player "Its good to know there is a cooking class here."
         narrator "Someone from inside the classroom notices you from the window"
         sienna "Hey Mrs Campbell."
         sienna "There's a creep spying on us through the window"
         player "uh oh"
         player "I think I have to run before I get caught"
+
+        menu:
+            narrator "Which way do I run?"
+
+            "North":
+                $ var_string_breakdirection = "north"
+                jump day_1_school_class_break_direction_north
+
+            "West":
+                $ var_string_breakdirection = "west"
+                jump day_1_school_class_break_direction_west
+
+################################################################################
+
+label day_1_school_class_break_direction_west:
+
+    play ambient bga_school_chatter fadein 1 fadeout 1
+    scene bg school_corridor_band with fade
+
+    narrator "Am I hearing music? Maybe there's an elective over here..."
+
+    # play sound sfx_distant_singing
+
+    narrator "Is that, singing...?"
+    narrator "I think it was over there by the window. I hope they don't mind an audience..."
+    narrator "..."
+    laine "Do you mind?"
+    player "Oh, I uhh... I just wanted to say it sounded great."
+    laine "Oh, I know. But I wouldn't say great."
+    laine "I'd say perfect."
+    player "I guess, yeah."
+    laine "Oh no, you wouldn't get it. You don't seem like someone with a knack for music."
+    laine "I've never seen you around the music class."
+    laine "As a matter of fact, I've never seen you at all."
+    laine "Not that I care, but are you new?"
+    player "Yeah, actually, it's my first day."
+    laine "Well, in that case, it's never too late to join the class."
+    laine "If you thought my singing was... how did you put it?"
+    laine "'Great'."
+    laine "You could hear more of it if you signed up."
+    laine "If you have the talent for it, that is. Music isn't for everyone, after all."
+    player "Yeah... great."
+    laine "Do you think you're talented enough to join the likes of me?"
+    player "You'll find out tomorrow."
+    laine "Hmm? Well, I better see you tomorrow."
+    laine "Or else, I'll think very little of you..."
+    laine "Not like I already do, but you get the picture."
+    player "Uh huh..."
+    laine "Well, I better get back to my class."
+    laine "We have a performance soon, and of course, they need me."
+    laine "You better be here tomorrow."
+    laine "...Whoever you are."
+    narrator "She doesn't seem like the nicest person to talk to."
+    narrator "But it seems she wants people to join."
+    narrator "Just... could have phrased it a little more kindly."
+
+    play sound sfx_school_bell
+    event "{b}*ring!!!* *ring!!!*{/b}"
+
+    narrator "Looks like my break is over. At least I know where to go for science now."
+
+    jump day_1_school_class_science
 
 ################################################################################
 
@@ -1256,6 +1283,7 @@ label day_1_school_class_science:
             $ var_string_sciencepartner = "locke"
             narrator "I'll see if I can come around to Locke."
             player "Hey uh, Locke? Wanna be science partners?"
+            locke "Really!! AWESOME SAUCE!!!"
             locke "Yes siree! Mr. Moon! Me and..."
             player "It's [var_string_playername]."
             locke "Me and [var_string_playername] are science partners!"
