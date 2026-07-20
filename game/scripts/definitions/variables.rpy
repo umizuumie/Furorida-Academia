@@ -4,4 +4,5 @@ default var_boolean_likespoetry = False
 default var_string_saladdressing = "ranch"
 default var_string_lunchtable = "myself"
 default var_boolean_helpedsienna = False
+default var_string_breakdirection = "north"
 default var_string_sciencepartner = "faith"

@@ -37,7 +37,6 @@ init python:
 
     ds = _DesignSystem()
 
-
 ################################################################################
 ## Base Element Styles
 ################################################################################
@@ -105,7 +104,6 @@ style frame:
     padding    gui.frame_borders.padding
     background Frame("resources/images/gui/game/frame.png", gui.frame_borders, tile=gui.frame_tile)
 
-
 ################################################################################
 ## Design System Primitives
 ################################################################################
@@ -150,7 +148,6 @@ style ds_nav_button_text:
     outlines ds.OUTLINE_TITLE
     hover_outlines ds.OUTLINE_NAV_HOVER
 
-
 ################################################################################
 ## Say Screen Styles
 ################################################################################
@@ -186,7 +183,6 @@ style say_dialogue is default:
 style say_thought is say_dialogue
 style namebox_label is say_label
 
-
 ################################################################################
 ## Input Screen Styles
 ################################################################################
@@ -194,7 +190,6 @@ style namebox_label is say_label
 style input_prompt is default:
     xalign gui.dialogue_text_xalign
     properties gui.text_properties("input_prompt")
-
 
 ################################################################################
 ## Choice Screen Styles
@@ -213,7 +208,6 @@ style choice_button is default:
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
 
-
 ################################################################################
 ## Navigation Screen Styles
 ################################################################################
@@ -225,7 +219,6 @@ style navigation_button is gui_button:
 
 style navigation_button_text is gui_button_text:
     properties gui.text_properties("navigation_button")
-
 
 ################################################################################
 ## Game Menu Screen Styles
@@ -271,7 +264,6 @@ style return_button is navigation_button:
     yoffset -45
 
 style return_button_text is navigation_button_text
-
 
 ################################################################################
 ## File Slots Screen Styles
@@ -328,7 +320,6 @@ style slot_name_text is slot_button_text:
     color ds.COLOR_PRIMARY
     outlines ds.OUTLINE_LABEL
 
-
 ################################################################################
 ## Confirm Screen Styles
 ################################################################################
@@ -352,7 +343,6 @@ style confirm_button is gui_medium_button:
 style confirm_button_text is gui_medium_button_text:
     properties gui.text_properties("confirm_button")
 
-
 ################################################################################
 ## Notify Screen Styles
 ################################################################################
@@ -364,7 +354,6 @@ style notify_frame is empty:
 
 style notify_text is gui_text:
     properties gui.text_properties("notify")
-
 
 ################################################################################
 ## Skip Indicator Screen Styles
@@ -381,7 +370,6 @@ style skip_text is gui_text:
 style skip_triangle is skip_text:
     font "DejaVuSans.ttf"
 
-
 ################################################################################
 ## Quick Menu Screen Styles
 ################################################################################
@@ -396,7 +384,6 @@ style quick_button is default:
 
 style quick_button_text is button_text:
     properties gui.text_properties("quick_button")
-
 
 ################################################################################
 ## Main Menu Screen Styles
@@ -439,7 +426,6 @@ style main_menu_nav_button is button:
     activate_sound sfx_gui_press
 
 style main_menu_nav_button_text is ds_nav_button_text
-
 
 ################################################################################
 ## Preferences Screen Styles

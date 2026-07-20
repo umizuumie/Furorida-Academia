@@ -27,6 +27,7 @@ init -950 python in discord:
 
     import store
     from store import NoRollback
+    from store import Action
 
     class _PresenceContainer(NoRollback):
         def __init__(self):
@@ -45,11 +46,29 @@ init -950 python in discord:
     sys.path.insert(0, os.path.join(renpy.config.gamedir, "libs"))
     import pypresence
 
-    import time as _time
+    import time
     import threading
+    from copy import deepcopy
 
     _container = _PresenceContainer()
+    _container_lock = threading.Lock()
     _watchdog_stop = threading.Event()
+
+    start_time = time.time()
+
+    class RenPyDiscord(NoRollback):
+        def __init__(self):
+            self.properties = {}
+
+    no_rollback = RenPyDiscord()
+
+    global original_properties, rollback_properties
+    original_properties = deepcopy(main_menu_state)
+
+    if not "start" in original_properties:
+        original_properties["start"] = "start_time"
+
+    rollback_properties = {}
 
     def _try_connect():
         asyncio.set_event_loop(asyncio.new_event_loop())
@@ -61,7 +80,8 @@ init -950 python in discord:
                 print_important("Attempting to connect to Discord Rich Presence... (attempt {}/{})".format(_attempt, _max_retries))
                 obj = pypresence.Presence(application_id)
                 obj.connect()
-                _container.obj = obj
+                with _container_lock:
+                    _container.obj = obj
                 print_important("Successfully connected.")
                 return True
 
@@ -73,7 +93,7 @@ init -950 python in discord:
                 print_important("Connection attempt {} failed: {}".format(_attempt, e))
                 if _attempt < _max_retries:
                     print_important("Retrying in {} seconds...".format(_retry_delay))
-                    _time.sleep(_retry_delay)
+                    time.sleep(_retry_delay)
                 else:
                     print_important("All {} attempts failed.".format(_max_retries))
                     return False
@@ -85,28 +105,36 @@ init -950 python in discord:
         if connected:
             set(**original_properties)
 
-        while not _watchdog_stop.wait(timeout=15.0):
+        while not _watchdog_stop.wait(timeout=10.0):
 
             if not store.persistent.discord_enabled:
-                if _container.obj is not None:
+                with _container_lock:
+                    obj = _container.obj
+                if obj is not None:
                     try:
-                        _container.obj.clear()
+                        obj.clear()
                     except Exception:
                         pass
                 continue
 
-            if _container.obj is not None:
+            with _container_lock:
+                obj = _container.obj
+
+            if obj is not None:
                 try:
-                    _container.obj.update(**clean_properties(no_rollback.properties)) if no_rollback.properties else None
+                    if no_rollback.properties:
+                        obj.update(**clean_properties(no_rollback.properties))
                     continue
                 except Exception:
                     print_important("Discord Rich Presence connection lost. Attempting to reconnect...")
-                    _container.obj = None
+                    with _container_lock:
+                        _container.obj = None
 
             try:
                 obj = pypresence.Presence(application_id)
                 obj.connect()
-                _container.obj = obj
+                with _container_lock:
+                    _container.obj = obj
                 print_important("Reconnected to Discord Rich Presence.")
                 current = rollback_properties if rollback_properties else original_properties
                 set(**current)
@@ -118,7 +146,8 @@ init -950 python in discord:
 
     import atexit
     def _atexit_close():
-        obj = _container.obj
+        with _container_lock:
+            obj = _container.obj
         if obj is None:
             return
         try:
@@ -128,15 +157,11 @@ init -950 python in discord:
             pass
     atexit.register(_atexit_close)
 
-    import time
-
-    start_time = time.time()
-
-    from copy import deepcopy
-
     def presence_disabled(func):
         def wrapper(*args, **kwargs):
-            if _container.obj is None:
+            with _container_lock:
+                obj = _container.obj
+            if obj is None:
                 return None
             if not store.persistent.discord_enabled:
                 return None
@@ -170,10 +195,14 @@ init -950 python in discord:
         no_rollback.properties = deepcopy(props)
 
         try:
-            _container.obj.update(**clean_properties(no_rollback.properties))
+            with _container_lock:
+                obj = _container.obj
+                if obj is not None:
+                    obj.update(**clean_properties(no_rollback.properties))
         except Exception as e:
             print_important("Discord Presence lost connection during set: {}".format(e))
-            _container.obj = None
+            with _container_lock:
+                _container.obj = None
             return
 
         record_into_rollback()
@@ -192,10 +221,14 @@ init -950 python in discord:
             no_rollback.properties[p] = props[p]
 
         try:
-            _container.obj.update(**clean_properties(no_rollback.properties))
+            with _container_lock:
+                obj = _container.obj
+                if obj is not None:
+                    obj.update(**clean_properties(no_rollback.properties))
         except Exception as e:
             print_important("Discord Presence lost connection during update: {}".format(e))
-            _container.obj = None
+            with _container_lock:
+                _container.obj = None
             return
 
         record_into_rollback()
@@ -225,33 +258,25 @@ init -950 python in discord:
         global no_rollback
         no_rollback.properties = {}
         record_into_rollback()
-        _container.obj.clear()
+        with _container_lock:
+            obj = _container.obj
+        if obj is not None:
+            obj.clear()
 
     def close():
         _watchdog_stop.set()
-        if _container.obj is None:
+        with _container_lock:
+            obj = _container.obj
+            _container.obj = None
+        if obj is None:
             return
         print_important("Closing DRP connection.")
         try:
-            _container.obj.clear()
-            _container.obj.close()
+            obj.clear()
+            obj.close()
         except Exception as e:
             print_important("Error during close (connection may have already dropped): {}".format(e))
-        finally:
-            _container.obj = None
         print_important("Successfully closed.")
-
-    class RenPyDiscord(NoRollback):
-        def __init__(self):
-            self.properties = {}
-
-    global original_properties, main_menu_state
-    original_properties = deepcopy(main_menu_state)
-
-    if not "start" in original_properties:
-        original_properties["start"] = "start_time"
-
-    from store import Action
 
     @renpy.pure
     class Set(Action):
@@ -264,7 +289,9 @@ init -950 python in discord:
             renpy.restart_interaction()
 
         def get_sensitive(self):
-            return _container.obj is not None
+            with _container_lock:
+                connected = _container.obj is not None
+            return connected and store.persistent.discord_enabled
 
         def get_selected(self):
             global rollback_properties
@@ -286,7 +313,9 @@ init -950 python in discord:
             renpy.restart_interaction()
 
         def get_sensitive(self):
-            return _container.obj is not None
+            with _container_lock:
+                connected = _container.obj is not None
+            return connected and store.persistent.discord_enabled
 
         def get_selected(self):
             global rollback_properties
@@ -302,18 +331,21 @@ init -950 python in discord:
         def __call__(self):
             store.persistent.discord_enabled = not store.persistent.discord_enabled
             if not store.persistent.discord_enabled:
-                if _container.obj is not None:
+                with _container_lock:
+                    obj = _container.obj
+                if obj is not None:
                     try:
-                        _container.obj.clear()
+                        obj.clear()
                     except Exception:
                         pass
             else:
-                if _container.obj is not None:
+                with _container_lock:
+                    obj = _container.obj
+                if obj is not None:
                     set(**original_properties)
             renpy.restart_interaction()
 
         def get_selected(self):
             return bool(store.persistent.discord_enabled)
 
-define discord.no_rollback = discord.RenPyDiscord()
 default discord.rollback_properties = {}
