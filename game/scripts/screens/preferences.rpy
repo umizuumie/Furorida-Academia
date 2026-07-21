@@ -6,7 +6,7 @@ init python:
         return int(round(min(1.0, v) * 100))
 
     def delete_all_saves():
-        for slot in renpy.list_slots(None):
+        for slot in renpy.list_slots():
             renpy.unlink_save(slot)
         renpy.notify(_("All saves deleted."))
 

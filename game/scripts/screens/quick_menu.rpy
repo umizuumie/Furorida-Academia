@@ -11,7 +11,7 @@ screen quick_menu():
             textbutton _("Back") action Rollback()
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Options") action ShowMenu('save')
+            textbutton _("Pause") action ShowMenu('save')
 
 
 init python:

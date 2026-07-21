@@ -73,7 +73,7 @@ screen file_slots(title, current_screen=""):
                                 yoffset -8
                                 idle Transform("resources/images/gui/button/icon_delete.png", alpha=0.6)
                                 hover Transform("resources/images/gui/button/icon_delete.png", alpha=1.0)
-                                action FileDelete(slot)
+                                action Confirm(_("Delete this save file? This cannot be undone."), FileDelete(slot))
 
             hbox:
                 style_prefix "page"

@@ -105,6 +105,8 @@ screen main_menu():
 
     tag menu
 
+    default _has_saves = bool(renpy.list_slots())
+
     add "resources/images/gui/backgrounds/bg_gradient_primary.png" at mm_fade_in
     add "resources/images/gui/backgrounds/bg_pattern_sakuraheart_primary.png" at scroll_bg, mm_fade_in
 
@@ -124,7 +126,7 @@ screen main_menu():
 
         textbutton _("New Game") action Start() at main_menu_nav_grow, main_menu_nav_shine, mm_slide_left_back_out(0.1)
 
-        if renpy.list_slots():
+        if _has_saves:
             textbutton _("Load Game") action ShowMenu("load") at main_menu_nav_grow, main_menu_nav_shine, mm_slide_left_back_out(0.2)
         else:
             textbutton _("Load Game") action None at mm_slide_left_back_out(0.2), mm_nav_faded
