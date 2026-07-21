@@ -59,6 +59,8 @@ style gui_text:
 style button:
     properties gui.button_properties("button")
     background "resources/images/gui/button/[prefix_]background.png"
+    hover_sound sfx_gui_hover
+    activate_sound sfx_gui_press
 
 style button_text is gui_text:
     properties gui.text_properties("button")
@@ -286,8 +288,6 @@ style page_label_text is gui_label_text:
 style page_button is gui_button:
     properties gui.button_properties("page_button")
     background "resources/images/gui/button/[prefix_]background.png"
-    hover_sound sfx_gui_hover
-    activate_sound sfx_gui_press
 
 style page_button_text is gui_button_text:
     font ds.FONT_DISPLAY
@@ -304,8 +304,6 @@ style slot_button is gui_button:
     background          Solid(ds.COLOR_SLOT_BASE)
     hover_background    Solid(ds.COLOR_SLOT_HOVER)
     selected_background Solid(ds.COLOR_SLOT_SELECTED)
-    hover_sound sfx_gui_hover
-    activate_sound sfx_gui_press
 
 style slot_button_text is ds_body_text:
     xalign 0.5
@@ -422,8 +420,6 @@ style main_menu_nav_button is button:
     hover_background None
     xminimum 280
     padding (0, 4)
-    hover_sound sfx_gui_hover
-    activate_sound sfx_gui_press
 
 style main_menu_nav_button_text is ds_nav_button_text
 
@@ -454,6 +450,16 @@ style pref_percent_text is ds_body_primary_text:
     size ds.SIZE_SMALL
     min_width 54
 
+style pref_desc_frame is frame:
+    background Solid("#00000014")
+    ysize 130
+    padding (20, 12)
+
+style pref_desc_text is ds_body_text:
+    size ds.SIZE_SMALL_BODY
+    xfill True
+    yalign 0.5
+
 style pref_vbox is vbox:
     xsize 338
 
@@ -470,6 +476,22 @@ style radio_button_text is ds_body_interactive_text:
 
 style radio_vbox is pref_vbox:
     spacing gui.pref_button_spacing
+
+style pref_resolution_frame is frame:
+    background Solid("#00000014")
+    padding (14, 10)
+
+style pref_resolution_button is button:
+    padding (2, 4)
+    background None
+    hover_background None
+    selected_idle_background None
+    selected_hover_background None
+
+style pref_resolution_button_text is ds_body_interactive_text:
+    size ds.SIZE_SMALL
+    insensitive_color ds.COLOR_PRIMARY_FADED
+    xalign 0.0
 
 style check_label is pref_label
 style check_label_text is pref_label_text

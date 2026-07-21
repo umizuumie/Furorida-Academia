@@ -20,9 +20,9 @@ define jesse = Character(_("Jesse"), color="#905300")
 define luthor = Character(_("Luthor"), color="#7e5e00")
 define jessica = Character(_("Jessica"), color="#a4277a")
 define keith = Character(_("Keith"), color="#0c7900")
-define avery = Character(_("Avery"), color="#7541b8")
+define avery = Character(_("Avery"), color="#881fc4")
 define sienna = Character(_("Sienna"), color="#ac3600")
-define marie = Character(_("Marie"), color="#9e00ac")
+define marie = Character(_("Marie"), color="#0092ac")
 
 ## Characters - Teachers
 define teacher_jackson = Character(_("Mr. Jackson"), color="#3e55c8")

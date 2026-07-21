@@ -1,4 +1,4 @@
-screen game_menu(title, scroll=None, yinitial=0.0, spacing=0, show_bg=True, show_overlay=True, nav_style_prefix="navigation", show_nav=True, show_title=True):
+screen game_menu(title, scroll=None, yinitial=0.0, spacing=0, show_bg=True, show_overlay=True, nav_style_prefix="navigation", show_nav=True, show_title=True, current_screen=""):
 
     style_prefix "game_menu"
 
@@ -47,9 +47,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0, show_bg=True, show
                     transclude
 
     if show_nav:
-        use navigation(nav_style_prefix)
-
-    if nav_style_prefix == "main_menu_nav":
+        use navigation(nav_style_prefix, current_screen)
+    elif nav_style_prefix == "main_menu_nav":
         textbutton _("Return"):
             style "main_menu_nav_button"
             action Return()

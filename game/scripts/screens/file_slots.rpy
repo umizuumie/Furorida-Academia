@@ -1,23 +1,26 @@
-screen _menu_bg_secondary():
+screen _menu_bg_secondary(play_intro=True):
     add "resources/images/gui/backgrounds/bg_gradient_secondary.png"
     add "resources/images/gui/backgrounds/bg_pattern_sakuraheart_secondary.png" at scroll_bg
-    add "resources/images/gui/backgrounds/bg_overlay_sidebar.png" at mm_slide_left_easeout(0.0)
+    if play_intro:
+        add "resources/images/gui/backgrounds/bg_overlay_sidebar.png" at mm_slide_left_easeout(0.0)
+    else:
+        add "resources/images/gui/backgrounds/bg_overlay_sidebar.png"
 
 screen save():
     tag menu
     use _menu_bg_secondary
-    use file_slots(_("Save"))
+    use file_slots(_("Save"), "save")
 
 screen load():
     tag menu
     use _menu_bg_secondary
-    use file_slots(_("Load"))
+    use file_slots(_("Load"), "load")
 
-screen file_slots(title):
+screen file_slots(title, current_screen=""):
 
     default page_name_value = FilePageNameInputValue(pattern=_("Page {}"))
 
-    use game_menu(title, show_bg=False, show_overlay=False, nav_style_prefix="main_menu_nav", show_nav=False, show_title=False):
+    use game_menu(title, show_bg=False, show_overlay=False, nav_style_prefix="main_menu_nav", show_nav=True, show_title=False, current_screen=current_screen):
 
         vbox:
             spacing 5

@@ -52,6 +52,7 @@ init -950 python in discord:
 
     _container = _PresenceContainer()
     _container_lock = threading.Lock()
+    _state_lock = threading.Lock()
     _watchdog_stop = threading.Event()
 
     start_time = time.time()
@@ -67,8 +68,6 @@ init -950 python in discord:
 
     if not "start" in original_properties:
         original_properties["start"] = "start_time"
-
-    rollback_properties = {}
 
     def _try_connect():
         asyncio.set_event_loop(asyncio.new_event_loop())
@@ -122,8 +121,10 @@ init -950 python in discord:
 
             if obj is not None:
                 try:
-                    if no_rollback.properties:
-                        obj.update(**clean_properties(no_rollback.properties))
+                    with _state_lock:
+                        properties = deepcopy(no_rollback.properties)
+                    if properties:
+                        obj.update(**clean_properties(properties))
                     continue
                 except Exception:
                     print_important("Discord Rich Presence connection lost. Attempting to reconnect...")
@@ -136,7 +137,8 @@ init -950 python in discord:
                 with _container_lock:
                     _container.obj = obj
                 print_important("Reconnected to Discord Rich Presence.")
-                current = rollback_properties if rollback_properties else original_properties
+                with _state_lock:
+                    current = rollback_properties if rollback_properties else original_properties
                 set(**current)
             except Exception as e:
                 print_important("Reconnect attempt failed: {}".format(e))
@@ -173,7 +175,8 @@ init -950 python in discord:
 
     def record_into_rollback():
         global no_rollback, rollback_properties
-        rollback_properties = deepcopy(no_rollback.properties)
+        with _state_lock:
+            rollback_properties = deepcopy(no_rollback.properties)
 
     def clean_properties(d):
         d = deepcopy(d)
@@ -192,13 +195,15 @@ init -950 python in discord:
             props["start"] = "start_time"
 
         global no_rollback
-        no_rollback.properties = deepcopy(props)
+        with _state_lock:
+            no_rollback.properties = deepcopy(props)
+            snapshot = deepcopy(no_rollback.properties)
 
         try:
             with _container_lock:
                 obj = _container.obj
                 if obj is not None:
-                    obj.update(**clean_properties(no_rollback.properties))
+                    obj.update(**clean_properties(snapshot))
         except Exception as e:
             print_important("Discord Presence lost connection during set: {}".format(e))
             with _container_lock:
@@ -208,7 +213,9 @@ init -950 python in discord:
         record_into_rollback()
 
         if log:
-            print_properties("Discord Presence Set:{}".format(format_properties(rollback_properties)))
+            with _state_lock:
+                snapshot = deepcopy(rollback_properties)
+            print_properties("Discord Presence Set:{}".format(format_properties(snapshot)))
 
     @presence_disabled
     def update(log=True, **props):
@@ -217,14 +224,16 @@ init -950 python in discord:
                 props["start"] = time.time()
 
         global no_rollback
-        for p in props:
-            no_rollback.properties[p] = props[p]
+        with _state_lock:
+            for p in props:
+                no_rollback.properties[p] = props[p]
+            snapshot = deepcopy(no_rollback.properties)
 
         try:
             with _container_lock:
                 obj = _container.obj
                 if obj is not None:
-                    obj.update(**clean_properties(no_rollback.properties))
+                    obj.update(**clean_properties(snapshot))
         except Exception as e:
             print_important("Discord Presence lost connection during update: {}".format(e))
             with _container_lock:
@@ -234,7 +243,9 @@ init -950 python in discord:
         record_into_rollback()
 
         if log:
-            print_properties("Discord Presence Updated:{}".format(format_properties(rollback_properties)))
+            with _state_lock:
+                snapshot = deepcopy(rollback_properties)
+            print_properties("Discord Presence Updated:{}".format(format_properties(snapshot)))
 
     def reset():
         global original_properties
@@ -242,21 +253,27 @@ init -950 python in discord:
 
     @presence_disabled
     def on_load():
-        print_rollback("Discord Presence has been loaded from a save file:{}".format(format_properties(rollback_properties)))
         global rollback_properties
-        set(log=False, **rollback_properties)
+        with _state_lock:
+            snapshot = deepcopy(rollback_properties)
+        print_rollback("Discord Presence has been loaded from a save file:{}".format(format_properties(snapshot)))
+        set(log=False, **snapshot)
 
     @presence_disabled
     def rollback_check():
         global no_rollback, rollback_properties
-        if no_rollback.properties != rollback_properties:
-            print_rollback("Discord Presence does not match during this interaction. It is restored from the rollbackable variable:{}".format(format_properties(rollback_properties)))
-            set(log=False, **rollback_properties)
+        with _state_lock:
+            mismatch = no_rollback.properties != rollback_properties
+            snapshot = deepcopy(rollback_properties)
+        if mismatch:
+            print_rollback("Discord Presence does not match during this interaction. It is restored from the rollbackable variable:{}".format(format_properties(snapshot)))
+            set(log=False, **snapshot)
 
     @presence_disabled
     def clear():
         global no_rollback
-        no_rollback.properties = {}
+        with _state_lock:
+            no_rollback.properties = {}
         record_into_rollback()
         with _container_lock:
             obj = _container.obj
@@ -295,12 +312,14 @@ init -950 python in discord:
 
         def get_selected(self):
             global rollback_properties
-            if "start" in rollback_properties:
+            with _state_lock:
+                snapshot = deepcopy(rollback_properties)
+            if "start" in snapshot:
                 a = deepcopy(self.properties)
                 if "start" not in self.properties:
                     a["start"] = "start_time"
-                return a == rollback_properties
-            return self.properties == rollback_properties
+                return a == snapshot
+            return self.properties == snapshot
 
     @renpy.pure
     class Update(Action):
@@ -319,12 +338,14 @@ init -950 python in discord:
 
         def get_selected(self):
             global rollback_properties
-            if "start" in rollback_properties:
+            with _state_lock:
+                snapshot = deepcopy(rollback_properties)
+            if "start" in snapshot:
                 a = deepcopy(self.properties)
                 if "start" not in self.properties:
                     a["start"] = "start_time"
-                return a == rollback_properties
-            return self.properties == rollback_properties
+                return a == snapshot
+            return self.properties == snapshot
 
     class TogglePresence(Action):
 

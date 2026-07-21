@@ -104,7 +104,7 @@ label day_1_school_class_english:
     teacher_jackson "Fascinating... You sound delightful. Everybody say hello to Edward."
     event "..."
 
-    show edward at right, fade_out
+    hide edward with Dissolve(0.3)
 
     teacher_jackson "Okay... next up is Jesse. Jesse Heart, what's your fun fact?"
 
@@ -119,7 +119,7 @@ label day_1_school_class_english:
     teacher_jackson "I see... Well, next we have Cameron. Cameron Mann."
     jesse "Y-you didn't answer my question!"
 
-    show jesse at right, fade_out
+    hide jesse with Dissolve(0.3)
 
     teacher_jackson "Cameron, you're up."
 
@@ -137,7 +137,7 @@ label day_1_school_class_english:
     teacher_jackson "I can't wait to retire so I never have to hear you speak one more word, Cameron."
     cameron "Yes, teach."
 
-    show cameron at right, fade_out
+    hide cameron with Dissolve(0.3)
 
     teacher_jackson "Alright, who's up next? Faith! Faith Walker?"
 
@@ -152,12 +152,12 @@ label day_1_school_class_english:
     faith "Yeah, I think so?"
     teacher_jackson "What a striking bunch we have this year."
 
-    show faith at right, fade_out
+    hide faith with Dissolve(0.3)
 
     teacher_jackson "Surprisingly, there are more of you than last year..."
     teacher_jackson "While I'm working on getting the syllabus ready, talk amongst yourselves."
 
-    show teacher_jackson at left, fade_out
+    hide teacher_jackson with Dissolve(0.3)
 
     narrator "...That was interesting..."
     narrator "Can't say I have any plans to get to know these people anytime soon."
@@ -186,7 +186,7 @@ label day_1_school_class_english:
     teacher_jackson "Alright, everybody pay attention!"
     cameron "Well, good luck with that... I'll see you around. Just come to me if you need anything."
 
-    show cameron at right, fade_out
+    hide cameron with Dissolve(0.3)
 
     teacher_jackson "Let's test the overall class intelligence level before we get into any actual material."
     teacher_jackson "I need a few volunteers to answer some questions for me."
@@ -197,7 +197,7 @@ label day_1_school_class_english:
     teacher_jackson "Yes...? What, do you all want to gather in a circle and toss a ball?"
     faith "...No..."
 
-    show faith at right, fade_out
+    hide faith with Dissolve(0.3)
 
     teacher_jackson "Then let's begin, shall we? Raise your hand to volunteer!"
     event "..."
@@ -219,15 +219,15 @@ label day_1_school_class_english:
     jesse "I-I don't know! No idea!"
 
     show cameron at right, fade_in
-    show edward at right, fade_out
+    hide edward with Dissolve(0.3)
 
     cameron "You don't know what a noun is?"
     jesse "N-no! I b-bet you couldn't answer it either...!"
     teacher_jackson "Terrific... So it'll be like teaching last year then."
 
     show edward at right, fade_in
-    show cameron at right, fade_out
-    show jesse at center, fade_out
+    hide cameron with Dissolve(0.3)
+    hide jesse with Dissolve(0.3)
 
     edward "Y'idiot, mate! Just let me answer, ol'right?"
     teacher_jackson "Sure, Edward. What is a noun?"
@@ -237,7 +237,7 @@ label day_1_school_class_english:
     edward "Well... bloody hell mate, never mind if you're just gon' be playin' wit' me then."
     teacher_jackson "Spectacular."
 
-    show edward at right, fade_out
+    hide edward with Dissolve(0.3)
 
     teacher_jackson "I can't wait to teach you all for the rest of this school year."
     teacher_jackson "You all seem bright and intelligent. Full of creativity..."
@@ -248,7 +248,7 @@ label day_1_school_class_english:
     teacher_jackson "Cameron, do I have to send you to the principal's office?"
     cameron "No, teach."
 
-    show cameron at right, fade_out
+    hide cameron with Dissolve(0.3)
 
     teacher_jackson "Alright then. Now it's time to start the seating charts."
     teacher_jackson "I get that you're all probably upset about wanting to sit with your friends and all."
@@ -267,14 +267,14 @@ label day_1_school_class_english:
     edward "I've gotta be put with this kid? Oi', you better be quiet, yeah?"
 
     show jesse at right, fade_in
-    show faith at right, fade_out
+    hide faith with Dissolve(0.3)
 
     jesse "A-are you talking to me?"
     edward "Yeah, who else, mate?"
 
     show cameron at right, fade_in
-    show edward at center, fade_out
-    show jesse at center, fade_out
+    hide edward with Dissolve(0.3)
+    hide jesse with Dissolve(0.3)
 
     cameron "I'm good with this seating. Right, [var_string_playername]?"
     player "Yeah, sure."
@@ -287,7 +287,7 @@ label day_1_school_class_english:
     teacher_jackson "Alright, get to your next class! I'll see you all tomorrow."
     cameron "See you later, [var_string_playername]."
 
-    show cameron at right, fade_out
+    hide cameron with Dissolve(0.3)
 
     jump day_1_school_corridor_before_class_history
 
@@ -820,7 +820,7 @@ label day_1_school_class_physical_education:
     luthor "Gives me more time to warm up!"
     chris "Too bad I am the fastest runner there is!!!"
     chris "I'm gonna run sooo much faster than you."
-    chris "I'm a fast, speedy, quick guy. You're a slow, slow, slow guy."
+    chris "I'm a fast, speedy, quick guy. You're a slow, slowly, slow guy."
     teacher_galloni "Alright, since you two can't shut your mouths! You two are going next!"
     teacher_galloni "Luthor, next! Then Chris."
     luthor "..."
@@ -953,14 +953,14 @@ label day_1_school_corridor_before_class_science:
     play ambient bga_school_chatter fadein 1 fadeout 1
     scene bg school_corridor with fade
 
-    narrator "I left the gym and went to go explore the campus a bit more."
-    narrator "But there is just one problem."
-    narrator "I think I'm lost."
+    narrator "I left the gym, planning to explore the campus a bit more,"
+    narrator "but there's just one problem..."
+    narrator "...I think I'm lost."
     player "I was like, 90 percent sure my science class was over here."
     player "Did I make a wrong turn?"
     jimmy "You look lost."
     jimmy "Do you need some help?"
-    player "Oh, yeah, actually."
+    player "Oh, yeah, actually..."
     player "I'm looking for my science class."
     player "It's my sixth period, but I don't want to be late on my first day."
     jimmy "First day! In that case, hi..."
