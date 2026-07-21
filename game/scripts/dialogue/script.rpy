@@ -89,7 +89,7 @@ label day_1_school_class_english:
     $ _raw = renpy.input("{i}What's my name?{/i}", length=24, allow="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'. ").strip()
     $ var_string_playername = _raw.title() if _raw else "Player"
 
-    player "I'm [var_string_playername]. I just moved into town, and this is my first year here."
+    player "I just moved into town, and this is my first year here."
     player "For a fun fact, I uh... play video games in my free time."
     player "...That's about it."
     teacher_jackson "...Very unique. And just moved into town too..."
@@ -167,9 +167,9 @@ label day_1_school_class_english:
 
     cameron "{i}{color=#5b5b5b}{size=26}Pssst... Stranger...{/size}{/color}{/i}"
     player "Wh- Huh?"
-    cameron "My apologies. But your name was [var_string_playername], right?"
-    player "Yeah, that's me."
-    cameron "Greetings then, [var_string_playername]. And welcome to Furorida Academia. As you heard earlier, my name is Cameron."
+    cameron "My apologies for startling you, but your new here right?"
+    player "Yeah..."
+    cameron "Greetings then, and welcome to Furorida Academia. As you heard earlier, my name is Cameron."
     cameron "I'm kind of the unofficial school guide."
     cameron "If you need anything, just ask me and I'll have the answer."
     player "Right then... How come Mr. Jackson seems to hate you?"
@@ -255,7 +255,7 @@ label day_1_school_class_english:
     narrator "..."
     teacher_jackson "But we need these charts to ensure the class stays civil and focused... or whatever these charts do."
     teacher_jackson "Jesse, you'll be sitting next to Edward, front row."
-    teacher_jackson "[var_string_playername], you'll be sitting next to Cameron, middle row."
+    teacher_jackson "Late kid, you'll be sitting next to Cameron, middle row."
     teacher_jackson "And Faith, you'll be sitting at the back."
 
     show faith at right, fade_in
@@ -276,7 +276,7 @@ label day_1_school_class_english:
     hide edward with Dissolve(0.3)
     hide jesse with Dissolve(0.3)
 
-    cameron "I'm good with this seating. Right, [var_string_playername]?"
+    cameron "I'm good with this seating, right stranger?"
     player "Yeah, sure."
     cameron "Sounds good then."
     teacher_jackson "Tomorrow I expect everybody to have the class materials listed."
@@ -285,7 +285,7 @@ label day_1_school_class_english:
     event "{b}*ring!!!* *ring!!!*{/b}"
 
     teacher_jackson "Alright, get to your next class! I'll see you all tomorrow."
-    cameron "See you later, [var_string_playername]."
+    cameron "See you later, stranger."
 
     hide cameron with Dissolve(0.3)
 
@@ -367,11 +367,11 @@ label day_1_school_class_history:
     teacher_moore "C'mon, you can think of something!"
     luthor "..."
     teacher_moore "Disappointing! Keep on thinking while we continue!"
-    teacher_moore "You're up!"
+    teacher_moore "You're the transfer student, yes? You're up."
 
     play sound sfx_ball_catch_swoosh
 
-    player "I'm [var_string_playername], and... George Washington was the president once."
+    player "Uhh... I believe George Washington was the president once...?"
     teacher_moore "Correct! He was!"
     teacher_moore "...I have one more student on my roster but they don't seem to be here..."
     teacher_moore "Peculiar... Oh well!"
@@ -402,9 +402,10 @@ label day_1_school_class_history:
     july "Heya, neighbor!"
     player "Huh, me?"
     july "Yeah, since we have some time, I think it'd be best to get to know each other right now."
-    july "I'm July. And you're [var_string_playername], right?"
+    july "I'm July. You just moved here, right?"
     player "Yeah."
-    july "He does this a lot, by the way."
+    july "Huh, You usually see people move out, not in..."
+    july "Oh... he does this a lot, by the way."
     july "It's unfortunate that you ended up here. Not the greatest way to start your first day..."
     player "What do you mean?"
     july "The teacher. He loves to ramble on about history... it gives us essentially a free class period."
@@ -431,10 +432,11 @@ label day_1_school_class_history:
     avery "Ah, I'm sorry..."
     player "Don't apologize! It was my fault. I'll help you pick them up."
     avery "Oh, no it's fine...!"
-    avery "Um, you're [var_string_playername], right? The new student?"
-    player "That's me."
-    avery "Oh, that's cool."
-    avery "You... wouldn't happen to like poetry, would you?"
+    avery "Um, you're the new student right?"
+    player "I'm not the only new student... y'know?"
+    avery "Sorry! I mean, you're the first new student I've seen so far..."
+    player "You must not get around much then..."
+    avery "Yeah... You... wouldn't happen to like poetry, would you?"
     player "Poetry...?"
 
     menu:
@@ -637,7 +639,7 @@ label day_1_school_lunch_table_july:
 
     $ discord.update(details="In-Game", state="At Lunch︳Day 1")
 
-    july "Hey, [var_string_playername]! Over here!"
+    july "Hey! Over here!"
     player "Oh, hey July."
     july "What'd you get?"
     player "I just got a jerky stick and some water."
@@ -758,9 +760,9 @@ label day_1_school_corridor_before_class_physical_education:
     play ambient bga_school_chatter fadein 1 fadeout 1
     scene bg school_corridor with fade
 
-    narrator "Sucks the gym is all the way on the other side of the building."
+    narrator "Sucks the gym was all the way on the other side of the building."
     narrator "At least it'll burn off the lunch a bit."
-    narrator "I think I'm here."
+    narrator "Am I really late again...? Oh well..."
 
 ################################################################################
 
@@ -778,8 +780,8 @@ label day_1_school_class_physical_education:
     teacher_galloni "Raise your hand high, and say present!"
     luthor "Oh well, present."
     teacher_galloni "...We'll work on it. Let's see who else is here."
-    teacher_galloni "[var_string_playername]?"
-    player "Present!"
+    teacher_galloni "Late scrawny kid!"
+    player "Really...? I mean- Present!"
     teacher_galloni "And Randy?"
     randy "Here coach!"
     teacher_galloni "You're supposed to say present."
@@ -845,9 +847,7 @@ label day_1_school_class_physical_education:
 
     player "Oh, hey."
     randy "You new here? Glad to meet ya, I'm Randy."
-    randy "And your name was [var_string_playername], right?"
-    player "Yeah."
-    player "Quick question?"
+    player "Quick question..."
     randy "Shoot."
     player "How did you run the mile that fast?"
     randy "Oh... right."
@@ -966,7 +966,6 @@ label day_1_school_corridor_before_class_science:
     jimmy "First day! In that case, hi..."
     jimmy "I'm Jimmy!"
     jimmy "Nice to meet you."
-    player "I'm [var_string_playername]."
     jimmy "You said you are looking for a science class?"
     player "Correct."
     player "Mr. Moon's class."
@@ -1231,9 +1230,7 @@ label day_1_school_class_science:
     teacher_moon "Have a seat everyone, any seat at all."
     teacher_moon "Hope you all are ready for some science, because we're gonna get right into that."
     teacher_moon "But first of all, attendance."
-    teacher_moon "Is [var_string_playername] here?"
-    player "Right here."
-    teacher_moon "Next up on the list is Jake! Jake Glue!"
+    teacher_moon "Jake! Jake Glue!"
     jake "I'm present! Or... I was present, but that was in the past."
     teacher_moon "Good one Jake! You're the glue that holds my classroom together."
     teacher_moon "Now we have Locke?"
@@ -1244,6 +1241,8 @@ label day_1_school_class_science:
     teacher_moon "And last but not least, Faith! Faith Walker."
     faith "Over here!"
     teacher_moon "Great, everyone's here!"
+    player "Uhh... Mr. Moon? What about me?"
+    teacher_moon "Don't worry I already have you written down."
     teacher_moon "Now, before we get into all the fun and interesting science..."
     teacher_moon "We first need to talk about the importance of lab safety!"
     teacher_moon "We have goggles and gloves in the cabinets to the right of the class, next to the windows."
@@ -1271,10 +1270,10 @@ label day_1_school_class_science:
             $ var_string_sciencepartner = "faith"
             narrator "I'll pick Faith."
             player "Hey Faith, wanna group up?"
-            faith "Sure! Don't really know anyone here any better anyways..."
+            faith "Sure! Don't really know anyone here any better, so..."
             player "Yeah... I'm still getting used to it."
             player "Anyways, uh... Mr. Moon!"
-            teacher_moon "Yes, [var_string_playername]?"
+            teacher_moon "Yes?"
             player "Me and Faith are grouping up."
             teacher_moon "Perfect! I assume that means Locke and Jesse are grouping up as well?"
             jesse "G-guess so then..."
@@ -1284,10 +1283,8 @@ label day_1_school_class_science:
             narrator "I'll see if I can come around to Locke."
             player "Hey uh, Locke? Wanna be science partners?"
             locke "Really!! AWESOME SAUCE!!!"
-            locke "Yes siree! Mr. Moon! Me and..."
-            player "It's [var_string_playername]."
-            locke "Me and [var_string_playername] are science partners!"
-            teacher_moon "Fantastic you two!"
+            locke "YMr. Moon! I found my partner!"
+            teacher_moon "Fantastic Locke!"
             jesse "I g-guess me and Faith are grouping up then."
 
         "Jesse":
@@ -1297,7 +1294,7 @@ label day_1_school_class_science:
             jesse "Y-yeah? What do you need?"
             player "Wanna group up for this?"
             jesse "I g-guess I have to."
-            teacher_moon "Jesse, are you grouping up with [var_string_playername]?"
+            teacher_moon "Jesse, are you two a group?"
             jesse "Yeah..."
             teacher_moon "Alright, that means Faith and Locke are grouping up I assume?"
             faith "Guess so...!"
