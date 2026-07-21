@@ -23,16 +23,18 @@ define config.window_hide_transition = Dissolve(.2)
 
 define config.image_cache_size = 32
 define config.predict_statements = 20
-
-default preferences.text_cps = 35
-default preferences.afm_time = 15
-default persistent.discord_enabled = True
-default preferences.skip_unseen = True
+define config.skip_delay = 60
 
 define config.save_directory = "FuroridaAcademia"
 define config.window_icon = "resources/images/gui/branding/window_icon.png"
 
+default persistent.discord_enabled = True
+
 init python:
+    preferences.text_cps = 35
+    preferences.afm_time = 15
+    preferences.skip_unseen = True
+
     config.searchpath += ["resources/images"]
     build.classify('**~', None)
     build.classify('**.bak', None)
